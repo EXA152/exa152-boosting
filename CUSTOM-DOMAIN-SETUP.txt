@@ -1,0 +1,8 @@
+Recommended domain: exa152boosting.com
+
+Do NOT upload a CNAME file until you own the domain.
+After buying it:
+1. GitHub repository > Settings > Pages > Custom domain.
+2. Enter your domain.
+3. Follow GitHub's DNS instructions at your registrar.
+4. After HTTPS is active, update canonical/OG URLs and sitemap from the GitHub Pages URL to the new domain.

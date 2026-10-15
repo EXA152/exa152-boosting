@@ -1,0 +1,6 @@
+Bing Webmaster Tools setup:
+1. Go to Bing Webmaster Tools and sign in.
+2. Choose Import from Google Search Console.
+3. Select the exa152.github.io/exa152-boosting property.
+4. Import it.
+5. In Sitemaps, submit: https://exa152.github.io/exa152-boosting/sitemap.xml

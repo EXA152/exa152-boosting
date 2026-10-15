@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://Exa152.github.io/exa152-boosting/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
+  <url><loc>https://exa152.github.io/exa152-boosting/</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://exa152.github.io/exa152-boosting/phasmophobia-level-boosting.html</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://exa152.github.io/exa152-boosting/phasmophobia-prestige-boosting.html</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://exa152.github.io/exa152-boosting/fortnite-stw-traps.html</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://exa152.github.io/exa152-boosting/fortnite-stw-missions.html</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://exa152.github.io/exa152-boosting/fortnite-stw-ssd.html</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://exa152.github.io/exa152-boosting/fortnite-stw-crafting-materials.html</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://exa152.github.io/exa152-boosting/fortnite-stw-materials.html</loc><changefreq>weekly</changefreq></url>
 </urlset>

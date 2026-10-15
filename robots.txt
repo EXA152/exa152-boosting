@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://Exa152.github.io/exa152-boosting/sitemap.xml

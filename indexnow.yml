@@ -1,0 +1,101 @@
+name: IndexNow
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  notify-indexnow:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Wait for GitHub Pages deployment
+        run: sleep 90
+
+      - name: Build URL list
+        id: urls
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json, os, subprocess
+
+          base = "https://exa152.github.io/exa152-boosting"
+          all_urls = ['https://exa152.github.io/exa152-boosting/', 'https://exa152.github.io/exa152-boosting/phasmophobia-level-boosting.html', 'https://exa152.github.io/exa152-boosting/phasmophobia-prestige-boosting.html', 'https://exa152.github.io/exa152-boosting/phasmophobia-money-boosting.html', 'https://exa152.github.io/exa152-boosting/phasmophobia-achievement-boosting.html', 'https://exa152.github.io/exa152-boosting/fortnite-stw-traps.html', 'https://exa152.github.io/exa152-boosting/fortnite-stw-missions.html', 'https://exa152.github.io/exa152-boosting/fortnite-stw-ssd.html', 'https://exa152.github.io/exa152-boosting/fortnite-stw-crafting-materials.html', 'https://exa152.github.io/exa152-boosting/fortnite-stw-materials.html']
+
+          event = os.environ.get("GITHUB_EVENT_NAME", "")
+          if event == "workflow_dispatch":
+              urls = all_urls
+          else:
+              try:
+                  changed = subprocess.check_output(
+                      ["git", "diff", "--name-only", "HEAD^", "HEAD"],
+                      text=True
+                  ).splitlines()
+              except Exception:
+                  changed = []
+
+              urls = []
+              for path in changed:
+                  if path == "index.html":
+                      urls.append(base + "/")
+                  elif path.endswith(".html") and "/" not in path:
+                      urls.append(base + "/" + path)
+
+              # If the workflow itself is newly added or Git history is shallow,
+              # make the first run useful by submitting all current pages.
+              if not urls:
+                  urls = all_urls
+
+          with open("urls.json", "w", encoding="utf-8") as f:
+              json.dump(urls, f)
+
+          print("Submitting:")
+          for u in urls:
+              print(u)
+          PY
+
+      - name: Submit changed URLs to IndexNow
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json, urllib.request
+
+          key = "430ea29c740848638ab91b902c10a2c4"
+          key_location = "https://exa152.github.io/exa152-boosting/430ea29c740848638ab91b902c10a2c4.txt"
+
+          with open("urls.json", encoding="utf-8") as f:
+              urls = json.load(f)
+
+          payload = json.dumps({
+              "host": "exa152.github.io",
+              "key": key,
+              "keyLocation": key_location,
+              "urlList": urls
+          }).encode("utf-8")
+
+          req = urllib.request.Request(
+              "https://api.indexnow.org/indexnow",
+              data=payload,
+              headers={"Content-Type": "application/json; charset=utf-8"},
+              method="POST"
+          )
+
+          try:
+              with urllib.request.urlopen(req, timeout=30) as r:
+                  print("IndexNow HTTP status:", r.status)
+                  print(r.read().decode("utf-8", "ignore"))
+          except urllib.error.HTTPError as e:
+              print("IndexNow HTTP status:", e.code)
+              print(e.read().decode("utf-8", "ignore"))
+              if e.code not in (200, 202):
+                  raise
+          PY

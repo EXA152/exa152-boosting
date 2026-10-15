@@ -1,0 +1,32 @@
+name: IndexNow
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Submit URLs to IndexNow
+        run: |
+          curl -X POST "https://api.indexnow.org/indexnow" \
+          -H "Content-Type: application/json" \
+          -d '{
+            "host": "exa152.github.io",
+            "key": "430ea29c740848638ab91b902c10a2c4",
+            "keyLocation": "https://exa152.github.io/exa152-boosting/430ea29c740848638ab91b902c10a2c4.txt",
+            "urlList": [
+              "https://exa152.github.io/exa152-boosting/",
+              "https://exa152.github.io/exa152-boosting/phasmophobia-level-boosting.html",
+              "https://exa152.github.io/exa152-boosting/phasmophobia-prestige-boosting.html",
+              "https://exa152.github.io/exa152-boosting/phasmophobia-money-boosting.html",
+              "https://exa152.github.io/exa152-boosting/phasmophobia-achievement-boosting.html",
+              "https://exa152.github.io/exa152-boosting/fortnite-stw-traps.html",
+              "https://exa152.github.io/exa152-boosting/fortnite-stw-missions.html",
+              "https://exa152.github.io/exa152-boosting/fortnite-stw-ssd.html",
+              "https://exa152.github.io/exa152-boosting/fortnite-stw-crafting-materials.html",
+              "https://exa152.github.io/exa152-boosting/fortnite-stw-materials.html"
+            ]
+          }'

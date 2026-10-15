@@ -1,0 +1,12 @@
+INDEXNOW SETUP
+
+IndexNow key:
+430ea29c740848638ab91b902c10a2c4
+
+Public key file after GitHub Pages updates:
+https://exa152.github.io/exa152-boosting/430ea29c740848638ab91b902c10a2c4.txt
+
+The GitHub Actions workflow at:
+.github/workflows/indexnow.yml
+
+will notify IndexNow after pushes to main.

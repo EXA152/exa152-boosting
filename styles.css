@@ -350,3 +350,41 @@ button:focus-visible{
   border-radius:999px;
   background:linear-gradient(90deg,var(--red),var(--red2));
 }
+
+/* Listing graphics */
+.listing-image-link{
+  display:block;
+  margin-bottom:18px;
+  border-radius:15px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  background:#0d0d11;
+}
+.listing-image{
+  display:block;
+  width:100%;
+  height:auto;
+  aspect-ratio:1/1;
+  object-fit:cover;
+  transition:transform .25s ease,filter .25s ease;
+}
+.listing-image-link:hover .listing-image{
+  transform:scale(1.025);
+  filter:brightness(1.05);
+}
+.has-listing-image .tag{
+  margin-top:0;
+}
+.service-art{
+  display:block;
+  width:100%;
+  height:auto;
+  aspect-ratio:1/1;
+  object-fit:cover;
+  border-radius:14px;
+  border:1px solid var(--line);
+  margin-bottom:14px;
+}
+@media(max-width:560px){
+  .listing-image-link{margin-bottom:15px}
+}

@@ -1579,3 +1579,25 @@ article.card[data-listing-id] > p[data-role="description"]{
   display:none !important;
   margin:0 !important;
 }
+
+
+/* === V36: rounded oval-rectangle workload border matching reference === */
+#workload-notice.workload-notice,
+.detail-order-info{
+  border:1px solid #2a2a31 !important;
+  border-radius:14px !important;
+  background:#111116 !important;
+  box-shadow:none !important;
+  overflow:hidden !important;
+}
+
+/* Keep workload level color limited to the dot. */
+#workload-notice.workload-low,
+#workload-notice.workload-normal,
+#workload-notice.workload-high,
+.detail-order-info.workload-low,
+.detail-order-info.workload-normal,
+.detail-order-info.workload-high{
+  border-color:#2a2a31 !important;
+  background:#111116 !important;
+}

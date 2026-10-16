@@ -3,6 +3,9 @@
 
   const data = window.EXA152_DATA || { listings: {}, order: [], marketplaces: {} };
   const listings = data.listings || {};
+  const effectiveWorkload = settings.workload || data.workload || {};
+  const effectiveSiteUpdated = settings.siteUpdated || effectiveSiteUpdated || '';
+  const recentDays = Math.max(0, Math.min(5, Number(settings.recentlyUpdatedDays ?? 5)));
 
   const byId = id => listings[id] || null;
   const moneyText = item => item.priceText || `$${Number(item.price || 0).toFixed(2)} / unit`;
@@ -15,14 +18,25 @@
 
   const todayISO = () => new Date().toISOString().slice(0,10);
   const withinDate = iso => iso && todayISO() <= iso;
+  const recentlyChanged = iso => {
+    if (!iso || recentDays <= 0) return false;
+    const changed = new Date(iso + 'T00:00:00');
+    const today = new Date(todayISO() + 'T00:00:00');
+    const diff = Math.floor((today - changed) / 86400000);
+    return diff >= 0 && diff < recentDays;
+  };
   const orderEnabled = item => item.enabled !== false && String(item.status || '').toLowerCase() === 'available';
+  const pausedReasonFor = item =>
+    item?.pausedReason ||
+    settings.pausedReason ||
+    'Temporarily paused. Ordering is currently unavailable.';
   const visibleListing = item => item.visible !== false;
 
 
   const workloadClass = level => 'workload-' + String(level || 'normal').toLowerCase().replace(/[^a-z0-9]+/g,'-');
 
   function hydrateWorkload(root=document) {
-    const w = data.workload || {};
+    const w = effectiveWorkload;
     root.querySelectorAll('[data-role="workload-label"]').forEach(el => el.textContent = w.label || 'Current workload');
     root.querySelectorAll('[data-role="workload-message"]').forEach(el => el.textContent = w.message || 'Orders are completed in the order received.');
     root.querySelectorAll('.workload-notice, .detail-order-info').forEach(el => {
@@ -79,7 +93,7 @@
     const badges = [];
     if (item.featuredLabel) badges.push(['featured', item.featuredLabel]);
     if (withinDate(item.newUntil)) badges.push(['new', 'New']);
-    if (withinDate(item.updatedBadgeUntil)) badges.push(['updated', 'Recently Updated']);
+    if (recentlyChanged(item.updated) || withinDate(item.updatedBadgeUntil)) badges.push(['updated', 'Recently Updated']);
 
     if (!badges.length) {
       if (wrap) wrap.remove();
@@ -102,6 +116,21 @@
 
   function applyAvailability(card, item) {
     card.dataset.enabled = orderEnabled(item) ? 'true' : 'false';
+    let reason = card.querySelector('[data-role="paused-reason"]');
+    if (!orderEnabled(item)) {
+      if (!reason) {
+        reason = document.createElement('p');
+        reason.dataset.role = 'paused-reason';
+        reason.className = 'paused-reason';
+        const cta = card.querySelector('.cta-row');
+        if (cta) cta.insertAdjacentElement('beforebegin', reason);
+        else card.appendChild(reason);
+      }
+      reason.textContent = pausedReasonFor(item);
+    } else if (reason) {
+      reason.remove();
+    }
+
     const market = card.querySelector('[data-role="market-link"]');
     if (market) {
       if (orderEnabled(item)) {
@@ -140,7 +169,7 @@
     const market = item.marketplaceLabel;
     return [
       [`Where do I order ${item.detailTitle}?`, `Use the View on ${market} button on this page. The order, payment and buyer/seller communication are handled through ${market}.`],
-      ['Is the price on this page current?', `This page currently shows ${moneyText(item)}. It was last updated ${prettyDate(item.updated || data.siteUpdated)}. Confirm the final price on ${market} before ordering.`],
+      ['Is the price on this page current?', `This page currently shows ${moneyText(item)}. It was last updated ${prettyDate(item.updated || effectiveSiteUpdated)}. Confirm the final price on ${market} before ordering.`],
       ['What does this listing cover?', item.description],
       ['How do I check availability?', `The status shown here is ${item.status}. The live ${market} listing is the final source for current availability and order details.`]
     ];
@@ -169,7 +198,7 @@
       {'@type':'ListItem',position:3,name:item.detailTitle,item:pageUrl}
     ]};
     const faq = {'@type':'FAQPage','@id':pageUrl+'#faq',mainEntity:faqFor(item).map(([q,a])=>({'@type':'Question',name:q,acceptedAnswer:{'@type':'Answer',text:a}}))};
-    const webpage = {'@type':'WebPage','@id':pageUrl+'#webpage',url:pageUrl,name:item.detailTitle+' | EXA152',dateModified:item.updated || data.siteUpdated,breadcrumb:{'@id':pageUrl+'#breadcrumb'},mainEntity:{'@id':entity['@id']}};
+    const webpage = {'@type':'WebPage','@id':pageUrl+'#webpage',url:pageUrl,name:item.detailTitle+' | EXA152',dateModified:item.updated || effectiveSiteUpdated,breadcrumb:{'@id':pageUrl+'#breadcrumb'},mainEntity:{'@id':entity['@id']}};
     return {'@context':'https://schema.org','@graph':[webpage,breadcrumb,entity,faq]};
   }
 
@@ -182,7 +211,7 @@
     const discount = card.querySelector('[data-role="discount"], .discount-note');
     if (discount) { discount.textContent = item.discountText || ''; discount.hidden = !item.discountText; }
     const updated = card.querySelector('[data-role="updated"], .price-updated');
-    if (updated) { const iso=item.updated || data.siteUpdated; updated.textContent='Updated '+prettyDate(iso); updated.setAttribute('datetime',iso); }
+    if (updated) { const iso=item.updated || effectiveSiteUpdated; updated.textContent='Updated '+prettyDate(iso); updated.setAttribute('datetime',iso); }
     const type = card.querySelector('[data-role="type"]'); if (type) type.textContent = item.type;
     const status = card.querySelector('[data-role="status"]');
     if (status) { status.textContent=item.status; status.className=`status-badge ${statusClass(item.status)}`; }
@@ -207,7 +236,7 @@
     const desc = document.querySelector('.hero [data-role="description"]'); if (desc) desc.textContent=item.description;
     document.querySelectorAll('.hero [data-role="price"]').forEach(el=>el.textContent=moneyText(item));
     const updated = document.querySelector('.hero [data-role="updated"]');
-    if (updated) { const iso=item.updated || data.siteUpdated; updated.textContent='Price updated '+prettyDate(iso); updated.setAttribute('datetime',iso); }
+    if (updated) { const iso=item.updated || effectiveSiteUpdated; updated.textContent='Price updated '+prettyDate(iso); updated.setAttribute('datetime',iso); }
     const type = document.querySelector('.hero [data-role="type"]'); if (type) type.textContent=item.type;
     const status = document.querySelector('.hero [data-role="status"]'); if (status) { status.textContent=item.status; status.className=`status-badge ${statusClass(item.status)}`; }
     const market = document.querySelector('.hero [data-role="market-link"]');
@@ -221,6 +250,13 @@
         market.setAttribute('aria-disabled','true');
         market.classList.add('button-disabled');
         market.textContent='Currently unavailable';
+        let note = document.querySelector('.detail-paused-reason');
+        if (!note) {
+          note = document.createElement('p');
+          note.className='detail-paused-reason';
+          market.insertAdjacentElement('afterend', note);
+        }
+        note.textContent = pausedReasonFor(item);
       }
     }
     document.querySelectorAll('[data-role="marketplace-label"]').forEach(el=>el.textContent=item.marketplaceLabel);
@@ -344,6 +380,60 @@
     });
   }
 
+
+  function initCopyLinks() {
+    document.querySelectorAll('[data-copy-link]').forEach(button => {
+      button.addEventListener('click', async () => {
+        const url = button.dataset.copyLink || location.href;
+        try {
+          await navigator.clipboard.writeText(url);
+          const original = button.textContent;
+          button.textContent = 'Copied!';
+          button.classList.add('copied');
+          setTimeout(() => {
+            button.textContent = original;
+            button.classList.remove('copied');
+          }, 1600);
+        } catch {
+          const temp = document.createElement('textarea');
+          temp.value = url;
+          document.body.appendChild(temp);
+          temp.select();
+          document.execCommand('copy');
+          temp.remove();
+          button.textContent = 'Copied!';
+          setTimeout(() => button.textContent = 'Copy link', 1600);
+        }
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', 'copy_service_link', { page_path: location.pathname });
+        }
+      });
+    });
+  }
+
+  function initBackToTop() {
+    const button = document.querySelector('.back-to-top');
+    if (!button) return;
+    const update = () => button.classList.toggle('show', window.scrollY > 500);
+    window.addEventListener('scroll', update, { passive:true });
+    button.addEventListener('click', () => window.scrollTo({ top:0, behavior:'smooth' }));
+    update();
+  }
+
+  function initExternalLinkNotices() {
+    document.querySelectorAll('a[target="_blank"][href*="eldorado.gg"], a[target="_blank"][href*="zeusx.com"]').forEach(link => {
+      link.classList.add('external-market-link');
+      if (!link.querySelector('.external-icon')) {
+        const icon = document.createElement('span');
+        icon.className = 'external-icon';
+        icon.setAttribute('aria-hidden','true');
+        icon.textContent = '↗';
+        link.appendChild(icon);
+      }
+      link.title = (link.title ? link.title + ' — ' : '') + 'Opens an external marketplace website';
+    });
+  }
+
   document.addEventListener('DOMContentLoaded',()=>{
     document.querySelectorAll('article.card[data-listing-id]').forEach(hydrateCard);
     hydrateDetail();
@@ -351,5 +441,8 @@
     initListingTools();
     initMobileMenu();
     initMarketplaceTracking();
+    initCopyLinks();
+    initBackToTop();
+    initExternalLinkNotices();
   });
 })();

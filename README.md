@@ -64,3 +64,25 @@ Clicks to Eldorado and ZeusX are sent to Google Analytics as:
 - `marketplace_click` for general marketplace/profile links
 
 Parameters include marketplace, listing ID/name, game, destination URL, and page path.
+
+
+## Quick global settings
+Use `settings.js` for:
+- workload level / label / message
+- default paused reason
+- automatic Recently Updated duration (0–5 days)
+- site updated date
+- optional global notice
+
+## Recently Updated badges
+Set a listing's `updated` field in `listings-data.js`.
+The site will automatically show `Recently Updated` for the number of days set in `settings.js`, capped at 5 days.
+
+## Copy link
+Each listing detail page includes a Copy link button.
+
+## Privacy
+`privacy.html` explains analytics, external marketplace links, and payment handling.
+
+## Maintenance
+See `MAINTENANCE-CHECKLIST.md`.

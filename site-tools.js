@@ -445,6 +445,74 @@
     });
   }
 
+
+  function initFeaturedServices() {
+    const grid = document.getElementById('featured-services-grid');
+    if (!grid) return;
+    const limit = Math.max(1, Math.min(6, Number(settings.featuredLimit || 3)));
+    const featured = Object.values(listings)
+      .filter(item => visibleListing(item) && item.featuredLabel)
+      .sort((a,b) => {
+        const availableDiff = (orderEnabled(a) ? 0 : 1) - (orderEnabled(b) ? 0 : 1);
+        if (availableDiff) return availableDiff;
+        return (data.order || []).indexOf(a.id) - (data.order || []).indexOf(b.id);
+      })
+      .slice(0, limit);
+
+    grid.innerHTML = '';
+    featured.forEach(item => {
+      const a = document.createElement('a');
+      a.className = 'featured-service-card';
+      a.href = item.page;
+      a.dataset.listingId = item.id;
+
+      const img = document.createElement('img');
+      img.src = item.image;
+      img.alt = item.imageAlt || item.title;
+      img.loading = 'lazy';
+      img.decoding = 'async';
+      img.width = 800;
+      img.height = 800;
+
+      const body = document.createElement('div');
+      body.className = 'featured-service-body';
+
+      const badges = document.createElement('div');
+      badges.className = 'featured-service-badges';
+      const game = document.createElement('span');
+      game.className = 'tag';
+      game.textContent = item.gameLabel || item.game;
+      const feature = document.createElement('span');
+      feature.className = 'promo-badge promo-featured';
+      feature.textContent = item.featuredLabel;
+      badges.append(game, feature);
+
+      const title = document.createElement('strong');
+      title.textContent = item.title;
+      const price = document.createElement('span');
+      price.className = 'featured-price';
+      price.textContent = item.priceText || `$${Number(item.price).toFixed(2)} / unit`;
+
+      body.append(badges, title, price);
+      a.append(img, body);
+      grid.append(a);
+    });
+
+    const section = document.getElementById('featured-services');
+    if (section) section.hidden = featured.length === 0;
+  }
+
+  function hydrateLargeOrderNotice() {
+    const text = settings.largeOrderNotice || 'Large orders may require additional delivery time.';
+    document.querySelectorAll('[data-role="large-order-notice"]').forEach(el => el.textContent = text);
+  }
+
+  function limitChangelog() {
+    document.querySelectorAll('#updates .update-list').forEach(list => {
+      [...list.querySelectorAll('.update-item')].slice(5).forEach(item => item.remove());
+    });
+  }
+
   document.addEventListener('DOMContentLoaded',()=>{
     document.querySelectorAll('article.card[data-listing-id]').forEach(hydrateCard);
     hydrateDetail();
@@ -455,5 +523,8 @@
     initCopyLinks();
     initBackToTop();
     initExternalLinkNotices();
+    initFeaturedServices();
+    hydrateLargeOrderNotice();
+    limitChangelog();
   });
 })();

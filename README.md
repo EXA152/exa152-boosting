@@ -98,3 +98,23 @@ The workload text from `settings.js` now shows inside the black bordered notice 
 - on each listing detail page
 
 Edit `settings.js` → `workload.label` and `workload.message` to change that text site-wide.
+
+## Private listing editor
+The private editor is delivered separately as `EXA152-private-listing-editor.html`.
+It is intentionally NOT included in the GitHub deployment ZIP. Keep it on your computer and do not upload it to GitHub Pages.
+
+Open the editor locally, make changes, then use its buttons to download:
+- `settings.js`
+- `listings-data.js`
+
+Upload only those generated JS files when you want to apply the changes.
+
+## Featured Services
+Listings with `featuredLabel` are eligible for the Featured Services row.
+`settings.js` → `featuredLimit` controls how many are displayed.
+
+## Changelog
+The homepage keeps only the latest 5 updates.
+
+## Performance
+See `PERFORMANCE-CHECK.txt`.

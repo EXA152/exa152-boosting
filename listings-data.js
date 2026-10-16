@@ -1,17 +1,14 @@
 /*
-EXA152 LISTING DATA — EDIT THIS FILE FOR LISTING CHANGES.
-Change prices, links, discounts, status, enabled/visible toggles, featured badges, names, or dates here.
-The homepage cards and detail pages read from this file automatically.
-Set enabled: false to disable ordering but keep a listing visible.
-Set visible: false to hide a listing from the homepage/filter counts.
-Set featuredLabel to "Best Value" (or another label) for a highlight badge.
-Set newUntil / updatedBadgeUntil to YYYY-MM-DD for automatic New / Recently Updated badges.
-Change workload.level / workload.label / workload.message for the current queue notice.
-Change deliveryText per listing if a service needs a different estimated delivery window.
-Optional pausedReason per listing overrides the default reason from settings.js.
+EXA152 LISTINGS
+Normal listing changes are managed here. The private local editor can generate this file for you.
+
+Set enabled: false to pause ordering but keep a listing visible.
+Set visible: false to hide a listing from homepage results/counts.
+Set featuredLabel to "Best Value" (or another label) to include/highlight it in Featured Services.
+Set updated to YYYY-MM-DD when a listing itself changes.
 */
 window.EXA152_DATA = {
-  "siteUpdated": "2026-10-15",
+  "siteUpdated": "2026-10-16",
   "paymentNotice": "Payments and checkout are handled by Eldorado or ZeusX. This website does not collect or store payment details.",
   "defaultDeliveryText": "Estimated delivery: within 24 hours. Larger orders or high order volume may take longer.",
   "marketplaces": {
@@ -68,7 +65,7 @@ window.EXA152_DATA = {
       "socialImage": "phasmophobia-level-boosting.webp",
       "imageAlt": "10-Level Boosting graphic",
       "description": "Phasmophobia level boosting from EXA152 on Eldorado. The current listing is shown at $0.25 per unit.",
-      "discountText": "Discounts: 2+ 3% off · 5+ 9% off · 10+ 18% off"
+      "discountText": "Discounts: 2+ 3% off \u00b7 5+ 9% off \u00b7 10+ 18% off"
     },
     "phasmophobia-prestige-boosting": {
       "id": "phasmophobia-prestige-boosting",
@@ -80,7 +77,7 @@ window.EXA152_DATA = {
       "marketplace": "eldorado",
       "marketplaceLabel": "Eldorado",
       "marketplaceUrl": "https://www.eldorado.gg/tips-jar/oi/e06676b6-579a-46c7-3acd-08df2a88c911",
-      "price": 5.0,
+      "price": 5,
       "priceText": "$5.00 / unit",
       "type": "Gaming Service",
       "status": "Available",
@@ -92,7 +89,7 @@ window.EXA152_DATA = {
       "socialImage": "phasmophobia-prestige-boosting.webp",
       "imageAlt": "Prestige Boosting graphic",
       "description": "Phasmophobia prestige boosting from EXA152 on Eldorado. The current listing is shown at $5.00 per unit.",
-      "discountText": "Discounts: 2+ 3% off · 5+ 9% off · 10+ 18% off"
+      "discountText": "Discounts: 2+ 3% off \u00b7 5+ 9% off \u00b7 10+ 18% off"
     },
     "phasmophobia-money-boosting": {
       "id": "phasmophobia-money-boosting",
@@ -104,7 +101,7 @@ window.EXA152_DATA = {
       "marketplace": "eldorado",
       "marketplaceLabel": "Eldorado",
       "marketplaceUrl": "https://www.eldorado.gg/tips-jar/oi/ad728a6c-33e8-4ee4-0227-08df2ab21541",
-      "price": 1.0,
+      "price": 1,
       "priceText": "$1.00 / unit",
       "type": "Gaming Service",
       "status": "Available",
@@ -116,7 +113,7 @@ window.EXA152_DATA = {
       "socialImage": "phasmophobia-money-boosting.webp",
       "imageAlt": "Money Boosting graphic",
       "description": "Phasmophobia money boosting from EXA152 on Eldorado. The current listing is shown at $1.00 per unit.",
-      "discountText": "Discounts: 2+ 3% off · 5+ 9% off · 10+ 18% off"
+      "discountText": "Discounts: 2+ 3% off \u00b7 5+ 9% off \u00b7 10+ 18% off"
     },
     "phasmophobia-achievement-boosting": {
       "id": "phasmophobia-achievement-boosting",
@@ -128,7 +125,7 @@ window.EXA152_DATA = {
       "marketplace": "eldorado",
       "marketplaceLabel": "Eldorado",
       "marketplaceUrl": "https://www.eldorado.gg/tips-jar/oi/e4cab497-0f48-4796-0cbc-08df2ab21541",
-      "price": 3.0,
+      "price": 3,
       "priceText": "$3.00 / unit",
       "type": "Gaming Service",
       "status": "Available",
@@ -140,7 +137,7 @@ window.EXA152_DATA = {
       "socialImage": "phasmophobia-achievement-boosting.webp",
       "imageAlt": "Achievement Boosting graphic",
       "description": "Phasmophobia achievement boosting from EXA152 on Eldorado. The current listing is shown at $3.00 per unit.",
-      "discountText": "Discounts: 2+ 3% off · 5+ 9% off · 10+ 18% off"
+      "discountText": "Discounts: 2+ 3% off \u00b7 5+ 9% off \u00b7 10+ 18% off"
     },
     "fortnite-stw-traps": {
       "id": "fortnite-stw-traps",
@@ -164,7 +161,7 @@ window.EXA152_DATA = {
       "socialImage": "fortnite-stw-traps.webp",
       "imageAlt": "1 Stack of 144 Traps graphic",
       "description": "Fortnite Save the World 144 trap listing from EXA152 on Eldorado. The current listing is shown at $0.50 per unit.",
-      "discountText": "Discounts: 5+ 3% off · 25+ 10% off · 50+ 20% off"
+      "discountText": "Discounts: 5+ 3% off \u00b7 25+ 10% off \u00b7 50+ 20% off"
     },
     "fortnite-stw-missions": {
       "id": "fortnite-stw-missions",
@@ -188,7 +185,7 @@ window.EXA152_DATA = {
       "socialImage": "fortnite-stw-missions.webp",
       "imageAlt": "STW Missions graphic",
       "description": "Fortnite Save the World mission help from EXA152 on Eldorado. The current listing is shown at $0.50 per unit.",
-      "discountText": "Discounts: 5+ 3% off · 25+ 10% off · 50+ 18% off"
+      "discountText": "Discounts: 5+ 3% off \u00b7 25+ 10% off \u00b7 50+ 18% off"
     },
     "fortnite-stw-ssd": {
       "id": "fortnite-stw-ssd",
@@ -200,7 +197,7 @@ window.EXA152_DATA = {
       "marketplace": "eldorado",
       "marketplaceLabel": "Eldorado",
       "marketplaceUrl": "https://www.eldorado.gg/tips-jar/oi/6936cef6-c93b-4237-41b9-08df2606e186",
-      "price": 1.0,
+      "price": 1,
       "priceText": "$1.00 / unit",
       "type": "Gaming Service",
       "status": "Available",
@@ -212,7 +209,7 @@ window.EXA152_DATA = {
       "socialImage": "fortnite-stw-ssd.webp",
       "imageAlt": "Storm Shield Defense (SSD) graphic",
       "description": "Fortnite Save the World Storm Shield Defense help from EXA152 on Eldorado. The current listing is shown at $1.00 per unit.",
-      "discountText": "Discounts: 5+ 3% off · 25+ 10% off · 40+ 15% off"
+      "discountText": "Discounts: 5+ 3% off \u00b7 25+ 10% off \u00b7 40+ 15% off"
     },
     "fortnite-stw-crafting-materials": {
       "id": "fortnite-stw-crafting-materials",
@@ -237,7 +234,7 @@ window.EXA152_DATA = {
       "socialImage": "fortnite-stw-crafting-materials.webp",
       "imageAlt": "Trap / Weapon Crafting Materials graphic",
       "description": "Fortnite Save the World trap and weapon crafting materials from EXA152 on Eldorado. The current listing is shown at $0.25 per unit.",
-      "discountText": "Discounts: 5+ 3% off · 25+ 10% off · 50+ 20% off"
+      "discountText": "Discounts: 5+ 3% off \u00b7 25+ 10% off \u00b7 50+ 20% off"
     },
     "fortnite-stw-materials": {
       "id": "fortnite-stw-materials",
@@ -261,7 +258,7 @@ window.EXA152_DATA = {
       "socialImage": "fortnite-stw-materials.webp",
       "imageAlt": "Wood, Stone & Metal graphic",
       "description": "Fortnite Save the World building materials (wood, stone and metal) from EXA152 on Eldorado. The current listing is shown at $0.25 per unit.",
-      "discountText": "Discounts: 10+ 3% off · 30+ 8% off · 50+ 10% off"
+      "discountText": "Discounts: 10+ 3% off \u00b7 30+ 8% off \u00b7 50+ 10% off"
     },
     "palworld-boss-defeats": {
       "id": "palworld-boss-defeats",
@@ -275,7 +272,7 @@ window.EXA152_DATA = {
       "marketplace": "zeusx",
       "marketplaceLabel": "ZeusX",
       "marketplaceUrl": "https://zeusx.com/game/palworld/215/gaming-services/3-palworld-boss-defeats-24311433",
-      "price": 1.0,
+      "price": 1,
       "priceText": "$1.00 / unit",
       "type": "Gaming Service",
       "status": "Available",
@@ -300,7 +297,7 @@ window.EXA152_DATA = {
       "marketplace": "zeusx",
       "marketplaceLabel": "ZeusX",
       "marketplaceUrl": "https://zeusx.com/game/palworld/215/gaming-services/unlock-fast-travel-24311171",
-      "price": 1.0,
+      "price": 1,
       "priceText": "$1.00 / unit",
       "type": "Gaming Service",
       "status": "Available",
@@ -325,7 +322,7 @@ window.EXA152_DATA = {
       "marketplace": "zeusx",
       "marketplaceLabel": "ZeusX",
       "marketplaceUrl": "https://zeusx.com/game/palworld/215/gaming-services/palworld-map-exploration-24311011",
-      "price": 5.0,
+      "price": 5,
       "priceText": "$5.00 / unit",
       "type": "Gaming Service",
       "status": "Available",
@@ -350,7 +347,7 @@ window.EXA152_DATA = {
       "marketplace": "zeusx",
       "marketplaceLabel": "ZeusX",
       "marketplaceUrl": "https://zeusx.com/game/palworld/215/gaming-services/palworld-statue-of-power-leveling-24310777",
-      "price": 1.0,
+      "price": 1,
       "priceText": "$1.00 / unit",
       "type": "Gaming Service",
       "status": "Available",
@@ -367,15 +364,15 @@ window.EXA152_DATA = {
     "palworld-account-leveling": {
       "id": "palworld-account-leveling",
       "newUntil": "2026-10-29",
-      "title": "Palworld Account Leveling – 10 Levels",
-      "detailTitle": "Palworld Account Leveling – 10 Levels",
+      "title": "Palworld Account Leveling \u2013 10 Levels",
+      "detailTitle": "Palworld Account Leveling \u2013 10 Levels",
       "page": "palworld-account-leveling.html",
       "game": "palworld",
       "gameLabel": "Palworld",
       "marketplace": "zeusx",
       "marketplaceLabel": "ZeusX",
       "marketplaceUrl": "https://zeusx.com/game/palworld/215/gaming-services/palworld-account-leveling-10-levels-per-1-quantity-24310617",
-      "price": 1.0,
+      "price": 1,
       "priceText": "$1.00 / unit",
       "type": "Gaming Service",
       "status": "Available",
@@ -385,7 +382,7 @@ window.EXA152_DATA = {
       "deliveryText": "Estimated delivery: within 24 hours. Larger orders or high order volume may take longer.",
       "image": "palworld-account-leveling.webp",
       "socialImage": "palworld-account-leveling.jpg",
-      "imageAlt": "Palworld Account Leveling – 10 Levels graphic",
+      "imageAlt": "Palworld Account Leveling \u2013 10 Levels graphic",
       "description": "Palworld account leveling service from EXA152 on ZeusX. The current listing is shown at $1.00 per unit.",
       "discountText": ""
     },
@@ -400,7 +397,7 @@ window.EXA152_DATA = {
       "marketplace": "zeusx",
       "marketplaceLabel": "ZeusX",
       "marketplaceUrl": "https://zeusx.com/game/palworld/215/gaming-services/1-pal-with-any-attack-fully-condensedmax-stats-and-passive-24310509",
-      "price": 1.0,
+      "price": 1,
       "priceText": "$1.00 / unit",
       "type": "Gaming Service",
       "status": "Available",
@@ -425,7 +422,7 @@ window.EXA152_DATA = {
       "marketplace": "zeusx",
       "marketplaceLabel": "ZeusX",
       "marketplaceUrl": "https://zeusx.com/game/palworld/215/in-game-items/2-stacks-of-any-item-24310030",
-      "price": 1.0,
+      "price": 1,
       "priceText": "$1.00 / unit",
       "type": "In-Game Item",
       "status": "Available",

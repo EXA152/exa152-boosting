@@ -1,0 +1,22 @@
+EXA152 PERFORMANCE CHECK — 2026-10-16
+============================================
+Deploy package size: 6.91 MB
+HTML pages checked: 20
+Images: 30
+Lazy-loaded images: 16
+Non-lazy/eager images: 17
+Images missing width/height: 0
+
+Optimizations applied in this build:
+- Added preconnect hints for Google Tag Manager and Google Analytics.
+- Featured images use lazy loading.
+- Existing listing-card images retain lazy loading.
+- Existing hero images keep priority loading.
+- Existing Palworld WebP display files remain in use.
+- No admin/editor code is included in the deployable website package.
+
+Large image files over 500 KB:
+- palworld-items.jpg: 1093 KB (kept as fallback/social-quality asset; WebP is used for normal Palworld display where available)
+
+Live-site note:
+- The public GitHub Pages URL could not be fetched by the available web checker during this update, so this report is a static/package performance audit rather than a live Core Web Vitals measurement.

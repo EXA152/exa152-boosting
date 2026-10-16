@@ -38,8 +38,18 @@
 
   function hydrateWorkload(root=document) {
     const w = effectiveWorkload;
-    root.querySelectorAll('[data-role="workload-label"]').forEach(el => el.textContent = w.label || 'Current workload');
-    root.querySelectorAll('[data-role="workload-message"]').forEach(el => el.textContent = w.message || 'Orders are completed in the order received.');
+    const label = w.label || 'Current workload';
+    const message = w.message || 'Orders are completed in the order received.';
+    root.querySelectorAll('[data-role="workload-label"]').forEach(el => el.textContent = label);
+    root.querySelectorAll('[data-role="workload-message"]').forEach(el => el.textContent = message);
+    root.querySelectorAll('.detail-workload').forEach(el => {
+      el.innerHTML = '';
+      const dot = document.createElement('span');
+      dot.className = 'workload-dot';
+      const strong = document.createElement('strong');
+      strong.textContent = label;
+      el.append(dot, strong);
+    });
     root.querySelectorAll('.workload-notice, .detail-order-info').forEach(el => {
       [...el.classList].filter(c=>c.startsWith('workload-')).forEach(c=>el.classList.remove(c));
       el.classList.add(workloadClass(w.level));

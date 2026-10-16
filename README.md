@@ -90,3 +90,11 @@ See `MAINTENANCE-CHECKLIST.md`.
 ## settings.js workload fix
 The workload controls in `settings.js` now correctly override the site-wide workload banner.
 After editing `settings.js` on GitHub, save/commit the file and refresh the live site.
+
+
+## black bordered workload notice
+The workload text from `settings.js` now shows inside the black bordered notice style:
+- on the main Offers page
+- on each listing detail page
+
+Edit `settings.js` → `workload.label` and `workload.message` to change that text site-wide.

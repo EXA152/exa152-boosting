@@ -1283,6 +1283,14 @@ button:focus-visible{
   border-radius:14px;
   background:#111116;
 }
+ .detail-order-info{
+  display:block;
+  margin:16px 0 0;
+  padding:15px 18px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:#111116;
+}
 .detail-order-row{
   display:flex;
   flex-wrap:wrap;
@@ -1294,12 +1302,33 @@ button:focus-visible{
   align-items:center;
   gap:8px;
   font-size:.84rem;
+  font-weight:800;
+  white-space:nowrap;
+}
+.detail-order-info .delivery-estimate{
+  margin:0 !important;
 }
 .detail-order-info p{
   margin:9px 0 0;
   color:var(--muted);
   font-size:.82rem;
 }
+.workload-high.detail-order-info{
+  border-color:rgba(255,93,98,.32);
+}
+.workload-low.detail-order-info{
+  border-color:rgba(79,210,120,.28);
+}
+@media (max-width: 680px){
+  .detail-order-info{
+    padding:14px 15px;
+  }
+  .detail-order-row{
+    align-items:flex-start;
+    gap:8px;
+  }
+}
+
 
 .card[data-enabled="false"]{
   opacity:.62;

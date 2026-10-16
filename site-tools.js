@@ -520,23 +520,9 @@
   }
 
 
-  function globalNoticeKey(text) {
-    let hash = 0;
-    for (let i = 0; i < text.length; i++) {
-      hash = ((hash << 5) - hash) + text.charCodeAt(i);
-      hash |= 0;
-    }
-    return `exa152-global-notice-${Math.abs(hash)}`;
-  }
-
   function initGlobalNotice() {
     const text = String(settings.globalNotice || '').trim();
     if (!text) return;
-
-    const storageKey = globalNoticeKey(text);
-    try {
-      if (localStorage.getItem(storageKey) === 'dismissed') return;
-    } catch {}
 
     const notice = document.createElement('aside');
     notice.className = 'global-notice';
@@ -553,10 +539,9 @@
     message.className = 'global-notice-text';
     message.textContent = text;
 
+    // Dismisses this copy only. It intentionally does not save dismissal state,
+    // so the notice appears again on refresh, navigation, or a new tab.
     close.addEventListener('click', () => {
-      try {
-        localStorage.setItem(storageKey, 'dismissed');
-      } catch {}
       notice.remove();
     });
 

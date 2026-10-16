@@ -133,5 +133,5 @@ Set `globalNotice` in `settings.js` to any non-empty text to show a small gray r
 - red × in the top-left
 - does not auto-dismiss
 - only closes when the × is clicked
-- once dismissed, the same notice stays dismissed on that browser
-- changing the notice text makes the new notice appear again
+- clicking the × hides only the current copy of the notice
+- the notice appears again whenever the page is refreshed, another site page is opened, or the site is opened in another tab

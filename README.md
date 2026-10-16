@@ -1,14 +1,36 @@
 # EXA152 Gaming Services Website
 
-Static GitHub Pages site for EXA152 listings across Eldorado and ZeusX.
+## Main maintenance file
+Edit `listings-data.js` for normal listing changes.
 
-## Update listings in one place
-Edit `listings-data.js` for current listing names, prices, direct marketplace URLs, discounts, status/availability, listing type, and the shared `siteUpdated` date.
+For each listing:
+- `price` / `priceText` — displayed price
+- `marketplaceUrl` — direct Eldorado or ZeusX link
+- `discountText` — discount summary
+- `status` — label shown to visitors
+- `enabled: false` — keeps the listing visible but disables the order button
+- `visible: false` — hides the listing from the homepage and filter counts
+- `featuredLabel` — optional highlight such as `Best Value`
+- `newUntil` — show a `New` badge until YYYY-MM-DD
+- `updatedBadgeUntil` — show `Recently Updated` until YYYY-MM-DD
+- `updated` — optional per-listing update date
+- `siteUpdated` — fallback update date for the whole site
 
-The site JavaScript automatically updates the homepage cards, detail pages, FAQ answers, status badges and structured data from that file.
+## Homepage tools
+The homepage includes:
+- Search
+- Game / marketplace filters with counts
+- Price-range filter
+- Sorting
+- Availability badges
+- Featured / New badges
 
-## Current marketplace layout
-- Phasmophobia + Fortnite STW: Eldorado
-- Palworld: ZeusX
+## Marketplaces
+- Eldorado: Phasmophobia + Fortnite Save the World
+- ZeusX: Palworld
 
-Google Analytics, sitemap, IndexNow, responsive mobile navigation, search, filtering and sorting are included.
+## Mobile
+The header uses a hamburger menu on smaller screens.
+
+## SEO
+Each detail page includes breadcrumbs, structured data, FAQ markup, social preview metadata, sitemap coverage, and IndexNow support.

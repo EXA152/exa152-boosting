@@ -1,0 +1,15 @@
+EXA152 INDEXING CHECK — 2026-10-15
+
+Public search check:
+- A public site: search for exa152.github.io/exa152-boosting returned no results in the web search available during this update.
+- That does not mean Google Search Console rejected the pages; newly submitted pages can take time to appear publicly.
+
+Site-side checks completed:
+- sitemap.xml regenerated
+- Homepage + all detail pages included
+- lastmod set to 2026-10-15
+- robots.txt retained
+- IndexNow workflow retained
+- Breadcrumb / Service or Product / FAQ structured data retained
+
+Google Search Console account status cannot be read from these static files. Recheck the sitemap and Page Indexing report in Search Console after deployment.

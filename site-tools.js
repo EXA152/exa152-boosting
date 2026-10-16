@@ -13,6 +13,55 @@
   };
   const statusClass = value => 'status-' + String(value || '').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
 
+  const todayISO = () => new Date().toISOString().slice(0,10);
+  const withinDate = iso => iso && todayISO() <= iso;
+  const orderEnabled = item => item.enabled !== false && String(item.status || '').toLowerCase() === 'available';
+  const visibleListing = item => item.visible !== false;
+
+  function ensurePromoBadges(card, item) {
+    let wrap = card.querySelector('.promo-badges');
+    const badges = [];
+    if (item.featuredLabel) badges.push(['featured', item.featuredLabel]);
+    if (withinDate(item.newUntil)) badges.push(['new', 'New']);
+    if (withinDate(item.updatedBadgeUntil)) badges.push(['updated', 'Recently Updated']);
+
+    if (!badges.length) {
+      if (wrap) wrap.remove();
+      return;
+    }
+    if (!wrap) {
+      wrap = document.createElement('div');
+      wrap.className = 'promo-badges';
+      const marker = card.querySelector('.card-badge-row');
+      if (marker) marker.insertAdjacentElement('afterend', wrap);
+      else card.prepend(wrap);
+    }
+    wrap.replaceChildren(...badges.map(([kind,text]) => {
+      const span = document.createElement('span');
+      span.className = `promo-badge promo-${kind}`;
+      span.textContent = text;
+      return span;
+    }));
+  }
+
+  function applyAvailability(card, item) {
+    card.dataset.enabled = orderEnabled(item) ? 'true' : 'false';
+    const market = card.querySelector('[data-role="market-link"]');
+    if (market) {
+      if (orderEnabled(item)) {
+        market.href = item.marketplaceUrl;
+        market.removeAttribute('aria-disabled');
+        market.classList.remove('button-disabled');
+        market.textContent = `View on ${item.marketplaceLabel}`;
+      } else {
+        market.removeAttribute('href');
+        market.setAttribute('aria-disabled','true');
+        market.classList.add('button-disabled');
+        market.textContent = 'Currently unavailable';
+      }
+    }
+  }
+
   function faqFor(item) {
     const market = item.marketplaceLabel;
     return [
@@ -64,6 +113,8 @@
     const status = card.querySelector('[data-role="status"]');
     if (status) { status.textContent=item.status; status.className=`status-badge ${statusClass(item.status)}`; }
     const market = card.querySelector('[data-role="market-link"]'); if (market) market.href=item.marketplaceUrl;
+    ensurePromoBadges(card,item);
+    applyAvailability(card,item);
     const img = card.querySelector('img[data-role="image"], img.listing-image');
     if (img) { img.alt=item.imageAlt; if (!item.socialImage.endsWith('.jpg')) img.src=item.image; }
     const source = card.querySelector('picture source[type="image/webp"]'); if (source) source.srcset=item.image;
@@ -83,7 +134,19 @@
     if (updated) { const iso=item.updated || data.siteUpdated; updated.textContent='Price updated '+prettyDate(iso); updated.setAttribute('datetime',iso); }
     const type = document.querySelector('.hero [data-role="type"]'); if (type) type.textContent=item.type;
     const status = document.querySelector('.hero [data-role="status"]'); if (status) { status.textContent=item.status; status.className=`status-badge ${statusClass(item.status)}`; }
-    const market = document.querySelector('.hero [data-role="market-link"]'); if (market) market.href=item.marketplaceUrl;
+    const market = document.querySelector('.hero [data-role="market-link"]');
+    if (market) {
+      if (orderEnabled(item)) {
+        market.href=item.marketplaceUrl;
+        market.removeAttribute('aria-disabled');
+        market.classList.remove('button-disabled');
+      } else {
+        market.removeAttribute('href');
+        market.setAttribute('aria-disabled','true');
+        market.classList.add('button-disabled');
+        market.textContent='Currently unavailable';
+      }
+    }
     document.querySelectorAll('[data-role="marketplace-label"]').forEach(el=>el.textContent=item.marketplaceLabel);
     const faq = document.getElementById('listing-faq');
     if (faq) {
@@ -104,13 +167,19 @@
     const originalCardOrder = new Map(cards.map((c,i)=>[c,i]));
     const search = document.getElementById('listing-search');
     const sort = document.getElementById('listing-sort');
+    const priceFilter = document.getElementById('price-filter');
     const bar = document.getElementById('offer-filter');
     const count = document.getElementById('listing-count');
     let filter='all';
 
     function matchesFilter(card,item) {
-      if (filter.startsWith('marketplace:')) return item.marketplace===filter.split(':')[1];
-      if (filter.startsWith('game:')) return item.game===filter.split(':')[1];
+      if (filter.startsWith('marketplace:') && item.marketplace!==filter.split(':')[1]) return false;
+      if (filter.startsWith('game:') && item.game!==filter.split(':')[1]) return false;
+      const pf = priceFilter?.value || 'all';
+      const price = Number(item.price || 0);
+      if (pf==='under-1' && !(price < 1)) return false;
+      if (pf==='1-to-2.99' && !(price >= 1 && price < 3)) return false;
+      if (pf==='3-plus' && !(price >= 3)) return false;
       return true;
     }
     function searchable(item) {
@@ -133,13 +202,31 @@
       return originalGroupOrder.get(a)-originalGroupOrder.get(b);
     }
     const game_labels = {phasmophobia:'Phasmophobia',fortnite:'Fortnite Save the World',palworld:'Palworld'};
+    function updateFilterCounts() {
+      if (!bar) return;
+      const all = Object.values(listings).filter(visibleListing);
+      const countFor = f => {
+        if (f==='all') return all.length;
+        if (f.startsWith('marketplace:')) {
+          const v=f.split(':')[1]; return all.filter(i=>i.marketplace===v).length;
+        }
+        if (f.startsWith('game:')) {
+          const v=f.split(':')[1]; return all.filter(i=>i.game===v).length;
+        }
+        return all.length;
+      };
+      bar.querySelectorAll('.filter-chip').forEach(chip=>{
+        const el=chip.querySelector('.filter-count');
+        if (el) el.textContent = countFor(chip.dataset.filter||'all');
+      });
+    }
     function apply() {
       const q=(search?.value||'').trim().toLowerCase();
       const mode=sort?.value||'recommended';
       let visible=0;
       cards.forEach(card=>{
         const item=byId(card.dataset.listingId); if(!item) return;
-        const show=matchesFilter(card,item) && (!q || searchable(item).includes(q));
+        const show=visibleListing(item) && matchesFilter(card,item) && (!q || searchable(item).includes(q));
         card.hidden=!show; if(show) visible++;
       });
       groups.forEach(group=>{
@@ -151,7 +238,7 @@
         const parent=groups[0]?.parentElement;
         if(parent) [...groups].sort((a,b)=>groupCompare(a,b,mode)).forEach(g=>parent.appendChild(g));
       }
-      if(count) count.textContent=`${visible} listing${visible===1?'':'s'} shown`;
+      if(count) count.textContent=`${visible} of ${Object.values(listings).filter(visibleListing).length} listing${visible===1?'':'s'} shown`;
     }
     bar?.addEventListener('click',e=>{
       const button=e.target.closest('.filter-chip'); if(!button) return;
@@ -161,6 +248,8 @@
     });
     search?.addEventListener('input',apply);
     sort?.addEventListener('change',apply);
+    priceFilter?.addEventListener('change',apply);
+    updateFilterCounts();
     apply();
   }
 

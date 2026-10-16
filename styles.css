@@ -1071,3 +1071,146 @@ button:focus-visible{
     display:none !important;
   }
 }
+
+
+/* === V28: featured/new badges, hero art, price filters, questions === */
+.hero-main-art{
+  display:block;
+  width:100%;
+  height:auto;
+  aspect-ratio:9/7;
+  object-fit:cover;
+  border-radius:16px;
+  border:1px solid #2e2e36;
+}
+.hero-mini-stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+  margin-top:10px;
+}
+.hero-mini-stat{
+  padding:12px 8px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:#111116;
+  text-align:center;
+}
+.hero-mini-stat strong{
+  display:block;
+  font-size:1.2rem;
+}
+.hero-mini-stat span{
+  color:var(--muted);
+  font-size:.72rem;
+}
+
+.promo-badges{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  margin:-6px 0 14px;
+}
+.promo-badge{
+  display:inline-flex;
+  align-items:center;
+  min-height:26px;
+  padding:5px 9px;
+  border-radius:999px;
+  font-size:.68rem;
+  line-height:1;
+  font-weight:950;
+  letter-spacing:.045em;
+  text-transform:uppercase;
+}
+.promo-featured{
+  color:#ffe7a4;
+  background:rgba(255,184,55,.09);
+  border:1px solid rgba(255,184,55,.35);
+}
+.promo-new{
+  color:#d4b9ff;
+  background:rgba(139,92,246,.11);
+  border:1px solid rgba(168,85,247,.38);
+}
+.promo-updated{
+  color:#a8e9be;
+  background:rgba(62,194,104,.09);
+  border:1px solid rgba(62,194,104,.32);
+}
+
+.price-filter-wrap{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  color:var(--muted);
+  font-size:.86rem;
+  font-weight:800;
+}
+.price-filter-wrap select{
+  min-height:42px;
+  border:1px solid var(--line);
+  border-radius:10px;
+  background:#111116;
+  color:#f4f4f7;
+  padding:8px 34px 8px 11px;
+}
+
+.filter-chip{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+}
+.filter-count{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:22px;
+  height:22px;
+  padding:0 6px;
+  border-radius:999px;
+  background:rgba(255,255,255,.06);
+  color:#bdbdc7;
+  font-size:.72rem;
+  font-weight:900;
+}
+.filter-chip.active .filter-count{
+  background:rgba(255,255,255,.12);
+  color:#fff;
+}
+
+.button-disabled,
+.button[aria-disabled="true"]{
+  opacity:.48 !important;
+  cursor:not-allowed !important;
+  pointer-events:none !important;
+  filter:saturate(.5);
+  box-shadow:none !important;
+}
+
+.questions-section{
+  background:
+    radial-gradient(circle at 25% 0%,rgba(239,43,45,.08),transparent 34%),
+    radial-gradient(circle at 78% 20%,rgba(139,92,246,.08),transparent 34%),
+    #0c0c0f;
+  border-top:1px solid var(--line);
+}
+.questions-section .marketplace-info-card{
+  min-height:100%;
+}
+
+@media(max-width:900px){
+  .hero-main-art{aspect-ratio:16/10}
+  .hero-mini-stats{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:560px){
+  .hero-mini-stat{padding:10px 5px}
+  .hero-mini-stat strong{font-size:1.05rem}
+  .hero-mini-stat span{font-size:.65rem}
+  .listing-controls{align-items:stretch}
+  .price-filter-wrap{
+    width:100%;
+    justify-content:space-between;
+  }
+  .price-filter-wrap select{flex:1}
+}

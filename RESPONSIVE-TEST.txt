@@ -1,0 +1,58 @@
+EXA152 RESPONSIVE TEST — 2026-10-15
+==========================================
+Overall result: PASS
+
+Viewport 360x800
+- Horizontal overflow: No (360px content / 360px viewport)
+- Hero graphic present: True
+- Price filter present: True
+- Questions section present: True
+- Filter counts: All 16, Eldorado 9, ZeusX 7, Phasmophobia 4, Fortnite STW 5, Palworld 7
+- Mobile menu opens: True
+- Menu links: Phasmophobia, Fortnite STW, Palworld, Offers, Questions
+- Promotional badges rendered: 10
+- Browser JS/console errors: 0
+
+Viewport 390x844
+- Horizontal overflow: No (390px content / 390px viewport)
+- Hero graphic present: True
+- Price filter present: True
+- Questions section present: True
+- Filter counts: All 16, Eldorado 9, ZeusX 7, Phasmophobia 4, Fortnite STW 5, Palworld 7
+- Mobile menu opens: True
+- Menu links: Phasmophobia, Fortnite STW, Palworld, Offers, Questions
+- Under-$1 filter: 5 of 16 listings shown
+- Under-$1 + Palworld search: 0 of 16 listings shown
+- Promotional badges rendered: 10
+- Browser JS/console errors: 0
+
+Viewport 430x932
+- Horizontal overflow: No (430px content / 430px viewport)
+- Hero graphic present: True
+- Price filter present: True
+- Questions section present: True
+- Filter counts: All 16, Eldorado 9, ZeusX 7, Phasmophobia 4, Fortnite STW 5, Palworld 7
+- Mobile menu opens: True
+- Menu links: Phasmophobia, Fortnite STW, Palworld, Offers, Questions
+- Promotional badges rendered: 10
+- Browser JS/console errors: 0
+
+Viewport 768x1024
+- Horizontal overflow: No (768px content / 768px viewport)
+- Hero graphic present: True
+- Price filter present: True
+- Questions section present: True
+- Filter counts: All 16, Eldorado 9, ZeusX 7, Phasmophobia 4, Fortnite STW 5, Palworld 7
+- Mobile menu opens: True
+- Menu links: Phasmophobia, Fortnite STW, Palworld, Offers, Questions
+- Promotional badges rendered: 10
+- Browser JS/console errors: 0
+
+Viewport 1366x900
+- Horizontal overflow: No (1366px content / 1366px viewport)
+- Hero graphic present: True
+- Price filter present: True
+- Questions section present: True
+- Filter counts: All 16, Eldorado 9, ZeusX 7, Phasmophobia 4, Fortnite STW 5, Palworld 7
+- Promotional badges rendered: 10
+- Browser JS/console errors: 0

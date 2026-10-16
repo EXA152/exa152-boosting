@@ -1,7 +1,11 @@
 /*
 EXA152 LISTING DATA — EDIT THIS FILE FOR LISTING CHANGES.
-Change prices, direct listing links, discounts, availability/status, names, or the siteUpdated date here.
+Change prices, links, discounts, status, enabled/visible toggles, featured badges, names, or dates here.
 The homepage cards and detail pages read from this file automatically.
+Set enabled: false to disable ordering but keep a listing visible.
+Set visible: false to hide a listing from the homepage/filter counts.
+Set featuredLabel to "Best Value" (or another label) for a highlight badge.
+Set newUntil / updatedBadgeUntil to YYYY-MM-DD for automatic New / Recently Updated badges.
 */
 window.EXA152_DATA = {
   "siteUpdated": "2026-10-15",
@@ -38,6 +42,7 @@ window.EXA152_DATA = {
   "listings": {
     "phasmophobia-level-boosting": {
       "id": "phasmophobia-level-boosting",
+      "featuredLabel": "Best Value",
       "title": "10-Level Boosting",
       "detailTitle": "Phasmophobia Level Boosting",
       "page": "phasmophobia-level-boosting.html",
@@ -50,6 +55,8 @@ window.EXA152_DATA = {
       "priceText": "$0.25 / unit",
       "type": "Gaming Service",
       "status": "Available",
+      "enabled": true,
+      "visible": true,
       "image": "phasmophobia-level-boosting.webp",
       "socialImage": "phasmophobia-level-boosting.webp",
       "imageAlt": "10-Level Boosting graphic",
@@ -70,6 +77,8 @@ window.EXA152_DATA = {
       "priceText": "$5.00 / unit",
       "type": "Gaming Service",
       "status": "Available",
+      "enabled": true,
+      "visible": true,
       "image": "phasmophobia-prestige-boosting.webp",
       "socialImage": "phasmophobia-prestige-boosting.webp",
       "imageAlt": "Prestige Boosting graphic",
@@ -90,6 +99,8 @@ window.EXA152_DATA = {
       "priceText": "$1.00 / unit",
       "type": "Gaming Service",
       "status": "Available",
+      "enabled": true,
+      "visible": true,
       "image": "phasmophobia-money-boosting.webp",
       "socialImage": "phasmophobia-money-boosting.webp",
       "imageAlt": "Money Boosting graphic",
@@ -110,6 +121,8 @@ window.EXA152_DATA = {
       "priceText": "$3.00 / unit",
       "type": "Gaming Service",
       "status": "Available",
+      "enabled": true,
+      "visible": true,
       "image": "phasmophobia-achievement-boosting.webp",
       "socialImage": "phasmophobia-achievement-boosting.webp",
       "imageAlt": "Achievement Boosting graphic",
@@ -130,6 +143,8 @@ window.EXA152_DATA = {
       "priceText": "$0.50 / unit",
       "type": "In-Game Item",
       "status": "Available",
+      "enabled": true,
+      "visible": true,
       "image": "fortnite-stw-traps.webp",
       "socialImage": "fortnite-stw-traps.webp",
       "imageAlt": "1 Stack of 144 Traps graphic",
@@ -150,6 +165,8 @@ window.EXA152_DATA = {
       "priceText": "$0.50 / unit",
       "type": "Gaming Service",
       "status": "Available",
+      "enabled": true,
+      "visible": true,
       "image": "fortnite-stw-missions.webp",
       "socialImage": "fortnite-stw-missions.webp",
       "imageAlt": "STW Missions graphic",
@@ -170,6 +187,8 @@ window.EXA152_DATA = {
       "priceText": "$1.00 / unit",
       "type": "Gaming Service",
       "status": "Available",
+      "enabled": true,
+      "visible": true,
       "image": "fortnite-stw-ssd.webp",
       "socialImage": "fortnite-stw-ssd.webp",
       "imageAlt": "Storm Shield Defense (SSD) graphic",
@@ -178,6 +197,7 @@ window.EXA152_DATA = {
     },
     "fortnite-stw-crafting-materials": {
       "id": "fortnite-stw-crafting-materials",
+      "featuredLabel": "Best Value",
       "title": "Trap / Weapon Crafting Materials",
       "detailTitle": "Fortnite STW Trap & Weapon Crafting Materials",
       "page": "fortnite-stw-crafting-materials.html",
@@ -190,6 +210,8 @@ window.EXA152_DATA = {
       "priceText": "$0.25 / unit",
       "type": "In-Game Item",
       "status": "Available",
+      "enabled": true,
+      "visible": true,
       "image": "fortnite-stw-crafting-materials.webp",
       "socialImage": "fortnite-stw-crafting-materials.webp",
       "imageAlt": "Trap / Weapon Crafting Materials graphic",
@@ -210,6 +232,8 @@ window.EXA152_DATA = {
       "priceText": "$0.25 / unit",
       "type": "In-Game Item",
       "status": "Available",
+      "enabled": true,
+      "visible": true,
       "image": "fortnite-stw-materials.webp",
       "socialImage": "fortnite-stw-materials.webp",
       "imageAlt": "Wood, Stone & Metal graphic",
@@ -218,6 +242,8 @@ window.EXA152_DATA = {
     },
     "palworld-boss-defeats": {
       "id": "palworld-boss-defeats",
+      "featuredLabel": "Best Value",
+      "newUntil": "2026-10-29",
       "title": "3 Palworld Boss Defeats",
       "detailTitle": "3 Palworld Boss Defeats",
       "page": "palworld-boss-defeats.html",
@@ -230,6 +256,8 @@ window.EXA152_DATA = {
       "priceText": "$1.00 / unit",
       "type": "Gaming Service",
       "status": "Available",
+      "enabled": true,
+      "visible": true,
       "image": "palworld-boss-defeats.webp",
       "socialImage": "palworld-boss-defeats.jpg",
       "imageAlt": "3 Palworld Boss Defeats graphic",
@@ -238,6 +266,7 @@ window.EXA152_DATA = {
     },
     "palworld-fast-travel": {
       "id": "palworld-fast-travel",
+      "newUntil": "2026-10-29",
       "title": "Unlock Fast Travel",
       "detailTitle": "Unlock Fast Travel",
       "page": "palworld-fast-travel.html",
@@ -250,6 +279,8 @@ window.EXA152_DATA = {
       "priceText": "$1.00 / unit",
       "type": "Gaming Service",
       "status": "Available",
+      "enabled": true,
+      "visible": true,
       "image": "palworld-fast-travel.webp",
       "socialImage": "palworld-fast-travel.jpg",
       "imageAlt": "Unlock Fast Travel graphic",
@@ -258,6 +289,7 @@ window.EXA152_DATA = {
     },
     "palworld-map-exploration": {
       "id": "palworld-map-exploration",
+      "newUntil": "2026-10-29",
       "title": "Palworld Map Exploration",
       "detailTitle": "Palworld Map Exploration",
       "page": "palworld-map-exploration.html",
@@ -270,6 +302,8 @@ window.EXA152_DATA = {
       "priceText": "$5.00 / unit",
       "type": "Gaming Service",
       "status": "Available",
+      "enabled": true,
+      "visible": true,
       "image": "palworld-map-exploration.webp",
       "socialImage": "palworld-map-exploration.jpg",
       "imageAlt": "Palworld Map Exploration graphic",
@@ -278,6 +312,7 @@ window.EXA152_DATA = {
     },
     "palworld-statue-leveling": {
       "id": "palworld-statue-leveling",
+      "newUntil": "2026-10-29",
       "title": "Palworld Statue of Power Leveling",
       "detailTitle": "Palworld Statue of Power Leveling",
       "page": "palworld-statue-leveling.html",
@@ -290,6 +325,8 @@ window.EXA152_DATA = {
       "priceText": "$1.00 / unit",
       "type": "Gaming Service",
       "status": "Available",
+      "enabled": true,
+      "visible": true,
       "image": "palworld-statue-leveling.webp",
       "socialImage": "palworld-statue-leveling.jpg",
       "imageAlt": "Palworld Statue of Power Leveling graphic",
@@ -298,6 +335,7 @@ window.EXA152_DATA = {
     },
     "palworld-account-leveling": {
       "id": "palworld-account-leveling",
+      "newUntil": "2026-10-29",
       "title": "Palworld Account Leveling – 10 Levels",
       "detailTitle": "Palworld Account Leveling – 10 Levels",
       "page": "palworld-account-leveling.html",
@@ -310,6 +348,8 @@ window.EXA152_DATA = {
       "priceText": "$1.00 / unit",
       "type": "Gaming Service",
       "status": "Available",
+      "enabled": true,
+      "visible": true,
       "image": "palworld-account-leveling.webp",
       "socialImage": "palworld-account-leveling.jpg",
       "imageAlt": "Palworld Account Leveling – 10 Levels graphic",
@@ -318,6 +358,7 @@ window.EXA152_DATA = {
     },
     "palworld-pal": {
       "id": "palworld-pal",
+      "newUntil": "2026-10-29",
       "title": "1 Pal with Any Attack, Fully Condensed",
       "detailTitle": "1 Pal with Any Attack, Fully Condensed",
       "page": "palworld-pal.html",
@@ -330,6 +371,8 @@ window.EXA152_DATA = {
       "priceText": "$1.00 / unit",
       "type": "Gaming Service",
       "status": "Available",
+      "enabled": true,
+      "visible": true,
       "image": "palworld-pal.webp",
       "socialImage": "palworld-pal.jpg",
       "imageAlt": "1 Pal with Any Attack, Fully Condensed graphic",
@@ -338,6 +381,7 @@ window.EXA152_DATA = {
     },
     "palworld-items": {
       "id": "palworld-items",
+      "newUntil": "2026-10-29",
       "title": "2 Stacks of Any Item",
       "detailTitle": "2 Stacks of Any Item",
       "page": "palworld-items.html",
@@ -350,6 +394,8 @@ window.EXA152_DATA = {
       "priceText": "$1.00 / unit",
       "type": "In-Game Item",
       "status": "Available",
+      "enabled": true,
+      "visible": true,
       "image": "palworld-items.webp",
       "socialImage": "palworld-items.jpg",
       "imageAlt": "2 Stacks of Any Item graphic",

@@ -12,8 +12,8 @@ Change deliveryText per listing if a service needs a different estimated deliver
 window.EXA152_DATA = {
   "siteUpdated": "2026-10-15",
   "workload": {
-    "level": "normal",
-    "label": "Normal volume",
+    "level": "Low",
+    "label": "Low volume",
     "message": "Orders are completed in the order received. Delivery times may vary depending on current order volume."
   },
   "paymentNotice": "Payments and checkout are handled by Eldorado or ZeusX. This website does not collect or store payment details.",

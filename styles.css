@@ -615,3 +615,80 @@ button:focus-visible{
   .card-badge-row{margin-bottom:13px}
   .marketplace-badge{font-size:.64rem}
 }
+
+
+/* === V20: matching nav animation, purple Palworld underline === */
+.site-header nav{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.site-header nav a{
+  position:relative;
+  display:inline-block;
+  padding:10px 12px;
+  color:#a9a9b3;
+  text-decoration:none;
+  background:transparent;
+  border:none;
+  border-radius:0;
+  font-weight:600;
+  transition:color .2s ease, transform .2s ease;
+}
+
+.site-header nav a::after{
+  content:"";
+  position:absolute;
+  left:12px;
+  right:12px;
+  bottom:3px;
+  height:2px;
+  background:#ff3b3f;
+  border-radius:999px;
+  transform:scaleX(0);
+  transform-origin:center;
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+
+.site-header nav a:hover{
+  color:#fff;
+  transform:translateY(-2px);
+}
+
+.site-header nav a:hover::after,
+.site-header nav a.active::after{
+  transform:scaleX(1);
+  box-shadow:
+    0 0 6px rgba(255,59,63,.8),
+    0 0 12px rgba(255,59,63,.35);
+}
+
+.site-header nav a.palworld-nav{
+  color:#a9a9b3;
+  background:transparent;
+  border:none;
+  border-radius:0;
+  padding:10px 12px;
+  box-shadow:none;
+}
+
+.site-header nav a.palworld-nav::after{
+  display:block;
+  background:#a855f7;
+}
+
+.site-header nav a.palworld-nav:hover{
+  color:#fff;
+  background:transparent;
+  border:none;
+  transform:translateY(-2px);
+}
+
+.site-header nav a.palworld-nav:hover::after,
+.site-header nav a.palworld-nav.active::after{
+  transform:scaleX(1);
+  box-shadow:
+    0 0 6px rgba(168,85,247,.9),
+    0 0 12px rgba(168,85,247,.45);
+}

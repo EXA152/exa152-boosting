@@ -1477,3 +1477,32 @@ button:focus-visible{
     height:42px;
   }
 }
+
+
+/* === V32: Offers-style red-to-purple underline for Updates + Questions === */
+.site-header nav a[href="#updates"]::after,
+.site-header nav a[href$="#updates"]::after,
+.site-header nav a[href="#questions"]::after,
+.site-header nav a[href$="#questions"]::after{
+  background:linear-gradient(90deg,var(--red) 0%,#d23b95 52%,#8b5cf6 100%) !important;
+}
+
+.site-header nav a[href="#updates"]:hover::after,
+.site-header nav a[href="#updates"]:focus-visible::after,
+.site-header nav a[href$="#updates"]:hover::after,
+.site-header nav a[href$="#updates"]:focus-visible::after,
+.site-header nav a[href="#questions"]:hover::after,
+.site-header nav a[href="#questions"]:focus-visible::after,
+.site-header nav a[href$="#questions"]:hover::after,
+.site-header nav a[href$="#questions"]:focus-visible::after{
+  box-shadow:0 0 7px rgba(239,43,45,.32),0 0 12px rgba(168,85,247,.28) !important;
+}
+
+@media(max-width:900px){
+  .site-header nav#site-nav > a[href="#updates"]::after,
+  .site-header nav#site-nav > a[href$="#updates"]::after,
+  .site-header nav#site-nav > a[href="#questions"]::after,
+  .site-header nav#site-nav > a[href$="#questions"]::after{
+    background:linear-gradient(90deg,#ef2b2d 0%,#d23b95 52%,#8b5cf6 100%) !important;
+  }
+}

@@ -11,11 +11,11 @@ globalNotice: optional short site-wide notice; leave empty to hide
 */
 window.EXA152_SETTINGS = {
   workload: {
-    level: "normal",
-    label: "Normal volume",
+    level: "Low",
+    label: "Low volume",
     message: "Orders are completed in the order received. Delivery times may vary depending on current order volume."
   },
-  pausedReason: "Temporarily paused. Ordering may be unavailable due to current order volume.",
+  pausedReason: "Temporarily paused. Ordering is unavailable due to current order volume.",
   recentlyUpdatedDays: 5,
   siteUpdated: "2026-10-15",
   globalNotice: ""

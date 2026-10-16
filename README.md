@@ -118,3 +118,20 @@ The homepage keeps only the latest 5 updates.
 
 ## Performance
 See `PERFORMANCE-CHECK.txt`.
+
+## Featured Services visibility
+Set `featuredLimit` in `settings.js` to:
+- `0` to hide the Featured Services section completely
+- `1`–`6` to show up to that many listings that have a `featuredLabel`
+
+If no visible listings have a `featuredLabel`, the section also disappears automatically.
+
+## Global notice
+Set `globalNotice` in `settings.js` to any non-empty text to show a small gray rounded notice in the top-right.
+- maximum width: 200px
+- white text
+- red × in the top-left
+- does not auto-dismiss
+- only closes when the × is clicked
+- once dismissed, the same notice stays dismissed on that browser
+- changing the notice text makes the new notice appear again

@@ -1726,3 +1726,65 @@ article.card[data-listing-id] > p[data-role="description"]{
   box-shadow:none !important;
   overflow:hidden !important;
 }
+
+
+/* === V39: optional Featured Services + global notice === */
+#featured-services[hidden]{
+  display:none !important;
+}
+
+.global-notice{
+  position:fixed;
+  top:16px;
+  right:16px;
+  z-index:9999;
+  width:min(200px, calc(100vw - 24px));
+  max-width:200px;
+  box-sizing:border-box;
+  padding:28px 12px 12px;
+  border:1px solid #55555f;
+  border-radius:18px;
+  background:#4a4a50;
+  color:#fff;
+  box-shadow:0 10px 30px rgba(0,0,0,.38);
+}
+
+.global-notice-text{
+  margin:0;
+  color:#fff;
+  font-size:.82rem;
+  font-weight:700;
+  line-height:1.4;
+  overflow-wrap:anywhere;
+}
+
+.global-notice-close{
+  position:absolute;
+  top:5px;
+  left:8px;
+  width:22px;
+  height:22px;
+  padding:0;
+  border:0;
+  background:transparent;
+  color:#ff4b50;
+  font-size:1.35rem;
+  font-weight:1000;
+  line-height:20px;
+  cursor:pointer;
+}
+
+.global-notice-close:hover,
+.global-notice-close:focus-visible{
+  color:#ff767a;
+  transform:scale(1.08);
+  outline:none;
+}
+
+@media(max-width:560px){
+  .global-notice{
+    top:10px;
+    right:10px;
+    width:min(200px, calc(100vw - 20px));
+  }
+}

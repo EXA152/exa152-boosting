@@ -449,7 +449,14 @@
   function initFeaturedServices() {
     const grid = document.getElementById('featured-services-grid');
     if (!grid) return;
-    const limit = Math.max(1, Math.min(6, Number(settings.featuredLimit || 3)));
+    const limit = Math.max(0, Math.min(6, Number(settings.featuredLimit ?? 3)));
+    const section = document.getElementById('featured-services');
+    if (limit === 0) {
+      grid.innerHTML = '';
+      if (section) section.hidden = true;
+      return;
+    }
+
     const featured = Object.values(listings)
       .filter(item => visibleListing(item) && item.featuredLabel)
       .sort((a,b) => {
@@ -498,7 +505,6 @@
       grid.append(a);
     });
 
-    const section = document.getElementById('featured-services');
     if (section) section.hidden = featured.length === 0;
   }
 
@@ -511,6 +517,51 @@
     document.querySelectorAll('#updates .update-list').forEach(list => {
       [...list.querySelectorAll('.update-item')].slice(5).forEach(item => item.remove());
     });
+  }
+
+
+  function globalNoticeKey(text) {
+    let hash = 0;
+    for (let i = 0; i < text.length; i++) {
+      hash = ((hash << 5) - hash) + text.charCodeAt(i);
+      hash |= 0;
+    }
+    return `exa152-global-notice-${Math.abs(hash)}`;
+  }
+
+  function initGlobalNotice() {
+    const text = String(settings.globalNotice || '').trim();
+    if (!text) return;
+
+    const storageKey = globalNoticeKey(text);
+    try {
+      if (localStorage.getItem(storageKey) === 'dismissed') return;
+    } catch {}
+
+    const notice = document.createElement('aside');
+    notice.className = 'global-notice';
+    notice.setAttribute('role', 'status');
+    notice.setAttribute('aria-live', 'polite');
+
+    const close = document.createElement('button');
+    close.type = 'button';
+    close.className = 'global-notice-close';
+    close.setAttribute('aria-label', 'Dismiss notice');
+    close.textContent = '×';
+
+    const message = document.createElement('p');
+    message.className = 'global-notice-text';
+    message.textContent = text;
+
+    close.addEventListener('click', () => {
+      try {
+        localStorage.setItem(storageKey, 'dismissed');
+      } catch {}
+      notice.remove();
+    });
+
+    notice.append(close, message);
+    document.body.appendChild(notice);
   }
 
   document.addEventListener('DOMContentLoaded',()=>{
@@ -526,5 +577,6 @@
     initFeaturedServices();
     hydrateLargeOrderNotice();
     limitChangelog();
+    initGlobalNotice();
   });
 })();

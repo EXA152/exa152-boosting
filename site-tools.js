@@ -51,7 +51,7 @@
       el.append(dot, strong);
     });
     root.querySelectorAll('.workload-notice, .detail-order-info').forEach(el => {
-      [...el.classList].filter(c=>c.startsWith('workload-')).forEach(c=>el.classList.remove(c));
+      el.classList.remove('workload-low', 'workload-normal', 'workload-high');
       el.classList.add(workloadClass(w.level));
     });
   }

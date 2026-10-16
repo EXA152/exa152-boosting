@@ -1712,3 +1712,17 @@ article.card[data-listing-id] > p[data-role="description"]{
     min-height:96px;
   }
 }
+
+
+/* === V38: preserve exact workload oval-rectangle after JS hydration === */
+#workload-notice{
+  width:100% !important;
+  box-sizing:border-box !important;
+  margin:0 0 20px !important;
+  padding:15px 18px !important;
+  border:1px solid #2a2a31 !important;
+  border-radius:14px !important;
+  background:#111116 !important;
+  box-shadow:none !important;
+  overflow:hidden !important;
+}

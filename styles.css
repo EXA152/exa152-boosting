@@ -1535,3 +1535,47 @@ button:focus-visible{
     background:linear-gradient(90deg,#ef2b2d 0%,#d23b95 52%,#8b5cf6 100%) !important;
   }
 }
+
+
+/* === V35: exact black workload border + cleaner listing cards === */
+
+/* Homepage workload box */
+#workload-notice.workload-notice{
+  width:100% !important;
+  box-sizing:border-box !important;
+  margin:0 0 20px !important;
+  padding:15px 18px !important;
+  border:1px solid #2a2a31 !important;
+  border-radius:0 !important;
+  background:#0b0b0e !important;
+  box-shadow:none !important;
+}
+
+/* Listing-page workload box */
+.detail-order-info{
+  width:100% !important;
+  box-sizing:border-box !important;
+  margin:16px 0 0 !important;
+  padding:15px 18px !important;
+  border:1px solid #2a2a31 !important;
+  border-radius:0 !important;
+  background:#0b0b0e !important;
+  box-shadow:none !important;
+}
+
+/* Workload level changes the dot only — not the black border */
+#workload-notice.workload-low,
+#workload-notice.workload-normal,
+#workload-notice.workload-high,
+.detail-order-info.workload-low,
+.detail-order-info.workload-normal,
+.detail-order-info.workload-high{
+  border-color:#2a2a31 !important;
+  background:#0b0b0e !important;
+}
+
+/* Remove old card-description spacing if any browser cached markup remains */
+article.card[data-listing-id] > p[data-role="description"]{
+  display:none !important;
+  margin:0 !important;
+}

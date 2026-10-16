@@ -1,12 +1,8 @@
-# EXA152 Boosting Website
+# EXA152 Gaming Services Website
 
-Upload every file in this folder to the root of the GitHub `exa152-boosting` repository.
+Static GitHub Pages site for EXA152 listings across Eldorado and ZeusX.
 
-Includes:
-- 7 direct service pages
-- listed prices
-- EXA152 favicon
-- social sharing preview
-- sitemap + robots
-- Google verification file
-- custom-domain and Bing setup notes
+- Phasmophobia + Fortnite STW: Eldorado
+- Palworld: ZeusX
+- Google Analytics enabled
+- Sitemap + IndexNow included

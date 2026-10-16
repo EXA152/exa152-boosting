@@ -388,3 +388,84 @@ button:focus-visible{
 @media(max-width:560px){
   .listing-image-link{margin-bottom:15px}
 }
+
+
+/* === Multi-marketplace + ZeusX / Palworld === */
+#palworld,#marketplaces{scroll-margin-top:92px}
+
+.market-buttons{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.button.zeusx{
+  background:linear-gradient(135deg,#5620a8,#8a3ffc);
+  box-shadow:0 10px 28px rgba(120,60,230,.18);
+}
+.button.zeusx:hover{
+  box-shadow:0 15px 34px rgba(120,60,230,.28);
+}
+.button.zeusx-outline{
+  background:transparent;
+  border:1px solid rgba(142,82,255,.5);
+  box-shadow:none;
+}
+.button.zeusx-outline:hover{
+  border-color:#9d68ff;
+  background:rgba(119,54,220,.08);
+  box-shadow:none;
+}
+.zeusx-group>h3::after{
+  background:linear-gradient(90deg,#6a2bc7,#a56cff);
+}
+.zeusx-card::before{
+  background:linear-gradient(90deg,transparent,rgba(157,104,255,.88),transparent);
+}
+.zeusx-card:hover{
+  border-color:rgba(157,104,255,.4);
+}
+.zeusx-tag{
+  background:rgba(115,55,210,.12);
+  border-color:rgba(157,104,255,.32);
+  color:#bd96ff;
+  box-shadow:inset 0 0 16px rgba(130,66,230,.06);
+}
+.marketplace-note{
+  display:inline-flex;
+  width:max-content;
+  max-width:100%;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid rgba(157,104,255,.28);
+  background:rgba(115,55,210,.08);
+  color:#c8abff!important;
+  font-size:.8rem;
+  font-weight:800;
+  margin:4px 0 0!important;
+}
+.detail-note{margin-top:14px!important}
+.zeusx-service-link:hover{
+  border-color:rgba(157,104,255,.45);
+}
+.zeusx-service-link::after{
+  color:#bd96ff;
+}
+.zeusx-hero{
+  background:
+    radial-gradient(circle at 82% 8%,rgba(118,56,217,.18),transparent 30%),
+    linear-gradient(180deg,#0d0d11,#09090b);
+}
+.zeusx-eyebrow{color:#bd96ff}
+.center-cta{justify-content:center}
+
+@media(max-width:1040px){
+  .market-buttons .button.small{padding:8px 11px}
+  .nav{gap:14px}
+  nav{gap:14px}
+}
+@media(max-width:900px){
+  .market-buttons{margin-left:auto}
+}
+@media(max-width:560px){
+  .market-buttons{display:none}
+}

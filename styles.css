@@ -915,3 +915,159 @@ button:focus-visible{
     width:72px !important;
   }
 }
+
+
+/* === V27: corrected mobile hamburger/menu === */
+.menu-toggle{
+  -webkit-appearance:none !important;
+  appearance:none !important;
+  box-sizing:border-box !important;
+  display:none;
+  flex:0 0 42px;
+  width:42px !important;
+  height:42px !important;
+  min-width:42px !important;
+  min-height:42px !important;
+  margin-left:auto !important;
+  padding:9px !important;
+  border:1px solid #303038 !important;
+  border-radius:11px !important;
+  background:#111116 !important;
+  color:#d8d8df !important;
+  box-shadow:none !important;
+  outline:none;
+  cursor:pointer;
+}
+
+.menu-toggle span{
+  display:block !important;
+  width:100% !important;
+  height:2px !important;
+  margin:4px 0 !important;
+  padding:0 !important;
+  border:0 !important;
+  border-radius:999px !important;
+  background:#d8d8df !important;
+  opacity:1;
+  transform:none;
+  transition:transform .18s ease, opacity .18s ease !important;
+}
+
+@media(max-width:900px){
+  .site-header .nav{
+    position:relative !important;
+    min-height:64px !important;
+    display:flex !important;
+    align-items:center !important;
+    gap:12px !important;
+  }
+
+  .site-header .brand{
+    margin-right:auto !important;
+  }
+
+  .menu-toggle{
+    display:block !important;
+    order:3;
+  }
+
+  /* Nothing from the navigation remains visible until the menu is opened. */
+  .site-header nav#site-nav{
+    display:none !important;
+    position:absolute !important;
+    left:0 !important;
+    right:0 !important;
+    top:100% !important;
+    z-index:100 !important;
+    margin:0 !important;
+    padding:12px !important;
+    flex-direction:column !important;
+    align-items:stretch !important;
+    gap:3px !important;
+    background:rgba(12,12,16,.985) !important;
+    border:1px solid var(--line) !important;
+    border-top:none !important;
+    border-radius:0 0 16px 16px !important;
+    box-shadow:0 22px 45px rgba(0,0,0,.42) !important;
+    backdrop-filter:blur(18px);
+  }
+
+  .site-header.mobile-open nav#site-nav{
+    display:flex !important;
+  }
+
+  /* Override the old rule that left Palworld visible by itself. */
+  .site-header nav#site-nav > a,
+  .site-header nav#site-nav > a.palworld-nav,
+  .site-header nav#site-nav > a.nav-red-line{
+    display:flex !important;
+    width:100% !important;
+    min-height:44px !important;
+    align-items:center !important;
+    padding:11px 10px 13px !important;
+    color:var(--muted) !important;
+    background:transparent !important;
+    border:0 !important;
+    border-radius:8px !important;
+    box-shadow:none !important;
+    text-shadow:none !important;
+    transform:none !important;
+  }
+
+  .site-header nav#site-nav > a:hover,
+  .site-header nav#site-nav > a:focus-visible{
+    color:#fff !important;
+    background:rgba(255,255,255,.035) !important;
+  }
+
+  /* Matching mobile underline lengths/colors. */
+  .site-header nav#site-nav > a::after{
+    left:10px !important;
+    right:auto !important;
+    bottom:6px !important;
+    width:78px !important;
+  }
+
+  .site-header nav#site-nav > a.nav-red-line::after{
+    background:linear-gradient(90deg,#ef2b2d,#ff4749) !important;
+  }
+
+  .site-header nav#site-nav > a.palworld-nav::after{
+    background:linear-gradient(90deg,#8b5cf6,#c084fc) !important;
+  }
+
+  .site-header nav#site-nav > a[href$="#offers"]::after,
+  .site-header nav#site-nav > a[href="#offers"]::after{
+    background:linear-gradient(90deg,#ef2b2d 0%,#d23b95 52%,#8b5cf6 100%) !important;
+  }
+
+  .site-header.mobile-open .menu-toggle span:nth-child(1){
+    transform:translateY(6px) rotate(45deg) !important;
+  }
+  .site-header.mobile-open .menu-toggle span:nth-child(2){
+    opacity:0 !important;
+  }
+  .site-header.mobile-open .menu-toggle span:nth-child(3){
+    transform:translateY(-6px) rotate(-45deg) !important;
+  }
+
+  .mobile-market-links{
+    display:grid !important;
+    grid-template-columns:1fr 1fr !important;
+    gap:8px !important;
+    padding-top:10px !important;
+    margin-top:8px !important;
+    border-top:1px solid var(--line) !important;
+  }
+
+  .mobile-market-links .button{
+    display:inline-flex !important;
+    width:100% !important;
+    min-height:42px !important;
+  }
+
+  .market-buttons,
+  .site-header>.wrap.nav>.button.small{
+    display:none !important;
+  }
+}

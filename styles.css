@@ -864,3 +864,54 @@ button:focus-visible{
   .listing-sort-wrap{display:grid;grid-template-columns:auto 1fr}
   .listing-count{text-align:left}
 }
+
+
+/* === V26: restore red nav lines for Phasmophobia + Fortnite STW === */
+.site-header nav > a.nav-red-line{
+  position:relative !important;
+  color:var(--muted) !important;
+  background:transparent !important;
+  border:none !important;
+  border-radius:0 !important;
+  box-shadow:none !important;
+  text-shadow:none !important;
+}
+
+.site-header nav > a.nav-red-line::after{
+  content:"" !important;
+  display:block !important;
+  position:absolute !important;
+  left:0 !important;
+  right:0 !important;
+  bottom:0 !important;
+  width:auto !important;
+  height:3px !important;
+  border-radius:999px !important;
+  background:linear-gradient(90deg,#ef2b2d 0%,#ff4749 100%) !important;
+  opacity:0 !important;
+  transform:translateY(4px) scaleX(.88) !important;
+  transform-origin:center !important;
+  transition:opacity .18s ease,transform .18s ease,box-shadow .18s ease !important;
+  pointer-events:none !important;
+}
+
+.site-header nav > a.nav-red-line:hover{
+  color:#fff !important;
+  transform:translateY(-2px) !important;
+}
+
+.site-header nav > a.nav-red-line:hover::after,
+.site-header nav > a.nav-red-line:focus-visible::after,
+.site-header nav > a.nav-red-line.active::after{
+  opacity:1 !important;
+  transform:translateY(0) scaleX(1) !important;
+  box-shadow:0 0 6px rgba(255,59,63,.8),0 0 12px rgba(255,59,63,.35) !important;
+}
+
+@media(max-width:900px){
+  .site-header nav > a.nav-red-line::after{
+    left:10px !important;
+    right:auto !important;
+    width:72px !important;
+  }
+}

@@ -18,6 +18,62 @@
   const orderEnabled = item => item.enabled !== false && String(item.status || '').toLowerCase() === 'available';
   const visibleListing = item => item.visible !== false;
 
+
+  const workloadClass = level => 'workload-' + String(level || 'normal').toLowerCase().replace(/[^a-z0-9]+/g,'-');
+
+  function hydrateWorkload(root=document) {
+    const w = data.workload || {};
+    root.querySelectorAll('[data-role="workload-label"]').forEach(el => el.textContent = w.label || 'Current workload');
+    root.querySelectorAll('[data-role="workload-message"]').forEach(el => el.textContent = w.message || 'Orders are completed in the order received.');
+    root.querySelectorAll('.workload-notice, .detail-order-info').forEach(el => {
+      [...el.classList].filter(c=>c.startsWith('workload-')).forEach(c=>el.classList.remove(c));
+      el.classList.add(workloadClass(w.level));
+    });
+  }
+
+  function setDeliveryText(root, item) {
+    const text = item?.deliveryText || data.defaultDeliveryText || 'Delivery time varies with current order volume.';
+    root.querySelectorAll('[data-role="delivery"]').forEach(el => el.textContent = text);
+  }
+
+  function trackMarketplaceClick(link, item=null) {
+    const href = link?.href || '';
+    const marketplace =
+      item?.marketplaceLabel ||
+      (href.includes('zeusx.com') ? 'ZeusX' : href.includes('eldorado.gg') ? 'Eldorado' : 'Marketplace');
+
+    const params = {
+      marketplace,
+      destination_url: href,
+      listing_id: item?.id || '',
+      listing_name: item?.title || '',
+      game: item?.gameLabel || '',
+      page_path: location.pathname
+    };
+
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', item ? 'listing_marketplace_click' : 'marketplace_click', params);
+    }
+
+    // Also expose the most recent click in the dataLayer for easy GA/Tag Manager debugging.
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: item ? 'listing_marketplace_click' : 'marketplace_click',
+      ...params
+    });
+  }
+
+  function initMarketplaceTracking() {
+    document.addEventListener('click', event => {
+      const link = event.target.closest('a[href*="eldorado.gg"], a[href*="zeusx.com"]');
+      if (!link) return;
+      const card = link.closest('[data-listing-id]');
+      const detailId = document.body.dataset.listingId;
+      const item = card ? byId(card.dataset.listingId) : (detailId ? byId(detailId) : null);
+      trackMarketplaceClick(link, item);
+    });
+  }
+
   function ensurePromoBadges(card, item) {
     let wrap = card.querySelector('.promo-badges');
     const badges = [];
@@ -60,6 +116,24 @@
         market.textContent = 'Currently unavailable';
       }
     }
+  }
+
+
+  function ensureDeliveryLine(card, item) {
+    let el = card.querySelector('[data-role="delivery"]');
+    if (!el) {
+      el = document.createElement('p');
+      el.className = 'delivery-estimate card-delivery';
+      el.dataset.role = 'delivery';
+      const meta = card.querySelector('.listing-meta-row');
+      if (meta) meta.insertAdjacentElement('afterend', el);
+      else {
+        const cta = card.querySelector('.cta-row');
+        if (cta) cta.insertAdjacentElement('beforebegin', el);
+        else card.appendChild(el);
+      }
+    }
+    el.textContent = item.deliveryText || data.defaultDeliveryText || 'Delivery time varies with current order volume.';
   }
 
   function faqFor(item) {
@@ -114,7 +188,9 @@
     if (status) { status.textContent=item.status; status.className=`status-badge ${statusClass(item.status)}`; }
     const market = card.querySelector('[data-role="market-link"]'); if (market) market.href=item.marketplaceUrl;
     ensurePromoBadges(card,item);
+    ensureDeliveryLine(card,item);
     applyAvailability(card,item);
+    setDeliveryText(card,item);
     const img = card.querySelector('img[data-role="image"], img.listing-image');
     if (img) { img.alt=item.imageAlt; if (!item.socialImage.endsWith('.jpg')) img.src=item.image; }
     const source = card.querySelector('picture source[type="image/webp"]'); if (source) source.srcset=item.image;
@@ -155,6 +231,8 @@
         s.textContent=q; p.textContent=a; d.append(s,p); return d;
       }));
     }
+    setDeliveryText(document,item);
+    hydrateWorkload(document);
     const schema = document.getElementById('listing-structured-data'); if (schema) schema.textContent=JSON.stringify(schemaFor(item));
   }
 
@@ -187,6 +265,9 @@
     }
     function cardCompare(a,b,mode) {
       const ia=byId(a.dataset.listingId), ib=byId(b.dataset.listingId); if(!ia||!ib) return 0;
+      const unavailableA = orderEnabled(ia) ? 0 : 1;
+      const unavailableB = orderEnabled(ib) ? 0 : 1;
+      if (unavailableA !== unavailableB) return unavailableA - unavailableB;
       if(mode==='price-asc') return ia.price-ib.price || ia.title.localeCompare(ib.title);
       if(mode==='price-desc') return ib.price-ia.price || ia.title.localeCompare(ib.title);
       return originalCardOrder.get(a)-originalCardOrder.get(b);
@@ -266,7 +347,9 @@
   document.addEventListener('DOMContentLoaded',()=>{
     document.querySelectorAll('article.card[data-listing-id]').forEach(hydrateCard);
     hydrateDetail();
+    hydrateWorkload(document);
     initListingTools();
     initMobileMenu();
+    initMarketplaceTracking();
   });
 })();

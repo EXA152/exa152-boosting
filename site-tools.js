@@ -2,9 +2,10 @@
   'use strict';
 
   const data = window.EXA152_DATA || { listings: {}, order: [], marketplaces: {} };
+  const settings = window.EXA152_SETTINGS || {};
   const listings = data.listings || {};
   const effectiveWorkload = settings.workload || data.workload || {};
-  const effectiveSiteUpdated = settings.siteUpdated || effectiveSiteUpdated || '';
+  const effectiveSiteUpdated = settings.siteUpdated || data.siteUpdated || '';
   const recentDays = Math.max(0, Math.min(5, Number(settings.recentlyUpdatedDays ?? 5)));
 
   const byId = id => listings[id] || null;

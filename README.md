@@ -86,3 +86,7 @@ Each listing detail page includes a Copy link button.
 
 ## Maintenance
 See `MAINTENANCE-CHECKLIST.md`.
+
+## settings.js workload fix
+The workload controls in `settings.js` now correctly override the site-wide workload banner.
+After editing `settings.js` on GitHub, save/commit the file and refresh the live site.

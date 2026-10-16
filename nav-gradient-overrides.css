@@ -1,0 +1,71 @@
+/* EXA152 nav underline overrides - v24 */
+:root {
+  --exa-red-1: #ef2b2d;
+  --exa-red-2: #ff4749;
+  --exa-purple-1: #8b5cf6;
+  --exa-purple-2: #c084fc;
+}
+
+nav a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 0 12px;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--exa-red-1) 0%, var(--exa-red-2) 100%);
+  opacity: 0;
+  transform: translateY(4px) scaleX(.88);
+  transform-origin: center;
+  transition: opacity .18s ease, transform .18s ease, box-shadow .18s ease;
+  pointer-events: none;
+}
+
+nav a:hover::after,
+nav a:focus-visible::after,
+nav a.active::after {
+  opacity: 1;
+  transform: translateY(0) scaleX(1);
+  box-shadow: 0 0 7px rgba(239, 43, 45, .45);
+}
+
+/* Palworld: same movement/shape, purple underline only when active/hovered */
+nav a.palworld-nav {
+  color: var(--muted) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+nav a.palworld-nav::after {
+  background: linear-gradient(90deg, var(--exa-purple-1) 0%, var(--exa-purple-2) 100%) !important;
+}
+
+nav a.palworld-nav:hover::after,
+nav a.palworld-nav:focus-visible::after,
+nav a.palworld-nav.active::after {
+  box-shadow: 0 0 7px rgba(168, 85, 247, .45), 0 0 12px rgba(168, 85, 247, .25);
+}
+
+/* Offers / All Offers: red on the left, purple on the right */
+nav a[href="#offers"]::after,
+nav a[href$="#offers"]::after {
+  background: linear-gradient(90deg, var(--exa-red-1) 0%, #d23b95 52%, var(--exa-purple-1) 100%) !important;
+}
+
+nav a[href="#offers"]:hover::after,
+nav a[href="#offers"]:focus-visible::after,
+nav a[href="#offers"].active::after,
+nav a[href$="#offers"]:hover::after,
+nav a[href$="#offers"]:focus-visible::after,
+nav a[href$="#offers"].active::after {
+  box-shadow: 0 0 7px rgba(239, 43, 45, .32), 0 0 12px rgba(168, 85, 247, .28) !important;
+}

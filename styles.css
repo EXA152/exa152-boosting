@@ -469,3 +469,149 @@ button:focus-visible{
 @media(max-width:560px){
   .market-buttons{display:none}
 }
+
+
+/* === V19: marketplace badges, filters, updated dates, 404 === */
+[hidden]{display:none!important}
+
+.palworld-nav{
+  color:#d5bdff!important;
+  padding:6px 11px;
+  border-radius:999px;
+  border:1px solid rgba(157,104,255,.32);
+  background:rgba(116,54,214,.10);
+  font-weight:800;
+}
+.palworld-nav:hover{
+  color:#fff!important;
+  border-color:rgba(184,137,255,.55);
+  background:rgba(116,54,214,.18);
+}
+.palworld-nav::after{display:none!important}
+
+.card-badge-row{
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-bottom:16px;
+}
+.card-badge-row .tag{margin-bottom:0}
+
+.marketplace-badge{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:28px;
+  padding:5px 9px;
+  border-radius:999px;
+  font-size:.69rem;
+  line-height:1;
+  font-weight:950;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+}
+.marketplace-badge.eldorado{
+  color:#ff9a9b;
+  background:rgba(239,43,45,.09);
+  border:1px solid rgba(239,43,45,.34);
+}
+.marketplace-badge.zeusx{
+  color:#d1b3ff;
+  background:rgba(121,59,221,.12);
+  border:1px solid rgba(157,104,255,.38);
+}
+
+.price-updated{
+  display:block;
+  width:max-content;
+  max-width:100%;
+  margin:2px 0 10px;
+  color:#8f8f9d;
+  font-size:.76rem;
+  font-weight:750;
+  letter-spacing:.01em;
+}
+.detail-updated{margin-bottom:12px}
+
+.offer-filter{
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
+  margin:0 0 30px;
+  padding:11px;
+  border:1px solid var(--line);
+  border-radius:16px;
+  background:rgba(255,255,255,.018);
+}
+.filter-chip{
+  appearance:none;
+  border:1px solid #34343d;
+  border-radius:999px;
+  background:#121217;
+  color:#c7c7d0;
+  padding:8px 13px;
+  font:inherit;
+  font-size:.86rem;
+  font-weight:800;
+  cursor:pointer;
+  transition:.16s ease;
+}
+.filter-chip:hover{
+  color:#fff;
+  border-color:#555561;
+  transform:translateY(-1px);
+}
+.filter-chip.active{
+  color:#fff;
+  border-color:rgba(255,71,73,.56);
+  background:linear-gradient(135deg,rgba(239,43,45,.2),rgba(255,71,73,.08));
+  box-shadow:0 7px 20px rgba(239,43,45,.08);
+}
+.filter-chip[data-filter="marketplace:zeusx"].active,
+.filter-chip[data-filter="game:palworld"].active{
+  border-color:rgba(157,104,255,.6);
+  background:linear-gradient(135deg,rgba(111,49,211,.28),rgba(157,104,255,.08));
+  box-shadow:0 7px 20px rgba(117,57,218,.1);
+}
+
+.not-found-hero{min-height:calc(100vh - 145px);display:grid;place-items:center}
+.not-found-wrap{text-align:center;max-width:850px}
+.not-found-wrap .lead{margin-left:auto;margin-right:auto}
+.marketplace-404{
+  margin-top:28px;
+  display:flex;
+  gap:20px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+.marketplace-404 a{
+  color:var(--muted);
+  font-weight:800;
+  text-decoration:underline;
+  text-decoration-color:#44444e;
+  text-underline-offset:4px;
+}
+.marketplace-404 a:hover{color:#fff}
+
+@media(max-width:900px){
+  /* Keep the Palworld shortcut visible in the header on tablets/phones */
+  .site-header nav{
+    display:flex;
+    margin-left:auto;
+  }
+  .site-header nav a:not(.palworld-nav){display:none}
+  .palworld-nav{display:inline-flex!important}
+}
+@media(max-width:560px){
+  .offer-filter{
+    gap:7px;
+    padding:9px;
+  }
+  .filter-chip{
+    padding:7px 10px;
+    font-size:.78rem;
+  }
+  .card-badge-row{margin-bottom:13px}
+  .marketplace-badge{font-size:.64rem}
+}

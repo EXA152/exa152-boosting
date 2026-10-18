@@ -135,3 +135,6 @@ Set `globalNotice` in `settings.js` to any non-empty text to show a small gray r
 - only closes when the × is clicked
 - clicking the × hides only the current copy of the notice
 - the notice appears again whenever the page is refreshed, another site page is opened, or the site is opened in another tab
+
+## Fortnite Sprites
+Added `fortnite-sprites.html` and `fortnite-sprites.webp` for the Eldorado Any Sprite listing.

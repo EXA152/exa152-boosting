@@ -8,7 +8,7 @@ Set featuredLabel to "Best Value" (or another label) to include/highlight it in 
 Set updated to YYYY-MM-DD when a listing itself changes.
 */
 window.EXA152_DATA = {
-  "siteUpdated": "2026-10-18",
+  "siteUpdated": "2026-10-19",
   "paymentNotice": "Payments and checkout are handled by Eldorado or ZeusX. This website does not collect or store payment details.",
   "defaultDeliveryText": "Estimated delivery: within 24 hours. Larger orders or high order volume may take longer.",
   "marketplaces": {
@@ -149,7 +149,7 @@ window.EXA152_DATA = {
       "gameLabel": "Fortnite Save the World",
       "marketplace": "eldorado",
       "marketplaceLabel": "Eldorado",
-      "marketplaceUrl": "https://www.eldorado.gg/tips-jar/oi/19d716ca-1eaa-495a-be78-08df239a2bf3",
+      "marketplaceUrl": "https://www.eldorado.gg/fortnite-skins/oi/1d227a98-d70a-4ef1-42c9-08df2dd1d42e",
       "price": 0.5,
       "priceText": "$0.50 / unit",
       "type": "In-Game Item",
@@ -173,7 +173,7 @@ window.EXA152_DATA = {
       "gameLabel": "Fortnite Save the World",
       "marketplace": "eldorado",
       "marketplaceLabel": "Eldorado",
-      "marketplaceUrl": "https://www.eldorado.gg/tips-jar/oi/3d133dba-beb3-4510-ee96-08df239a2c47",
+      "marketplaceUrl": "https://www.eldorado.gg/fortnite-skins/oi/94c93537-e32a-4c1e-696c-08df2dd1d304",
       "price": 0.5,
       "priceText": "$0.50 / unit",
       "type": "Gaming Service",
@@ -197,7 +197,7 @@ window.EXA152_DATA = {
       "gameLabel": "Fortnite Save the World",
       "marketplace": "eldorado",
       "marketplaceLabel": "Eldorado",
-      "marketplaceUrl": "https://www.eldorado.gg/tips-jar/oi/6936cef6-c93b-4237-41b9-08df2606e186",
+      "marketplaceUrl": "https://www.eldorado.gg/fortnite-skins/oi/1ca4b604-e6a0-4dc2-45ee-08df2dd1d42e",
       "price": 1,
       "priceText": "$1.00 / unit",
       "type": "Gaming Service",
@@ -222,7 +222,7 @@ window.EXA152_DATA = {
       "gameLabel": "Fortnite Save the World",
       "marketplace": "eldorado",
       "marketplaceLabel": "Eldorado",
-      "marketplaceUrl": "https://www.eldorado.gg/tips-jar/oi/1bf4c221-fd43-4764-9f8a-08df29e786ed",
+      "marketplaceUrl": "https://www.eldorado.gg/fortnite-skins/oi/f8f25d10-fe6d-4dc6-54ec-08df2dd1d304",
       "price": 0.25,
       "priceText": "$0.25 / unit",
       "type": "In-Game Item",
@@ -246,7 +246,7 @@ window.EXA152_DATA = {
       "gameLabel": "Fortnite Save the World",
       "marketplace": "eldorado",
       "marketplaceLabel": "Eldorado",
-      "marketplaceUrl": "https://www.eldorado.gg/tips-jar/oi/b3be34b4-aa17-415d-454b-08df239a2c0f",
+      "marketplaceUrl": "https://www.eldorado.gg/fortnite-skins/oi/c3e62ca0-be78-4648-9054-08df2dd1d408",
       "price": 0.25,
       "priceText": "$0.25 / unit",
       "type": "In-Game Item",

@@ -146,3 +146,6 @@ Added `fortnite-sprites.html` and `fortnite-sprites.webp` for the Eldorado Any S
 - Added fortnite-dupe-teaching.html.
 - Added fresh Google Search Console sitemap path: `sitemap-v45.xml`.
 - Current listing count: 18.
+
+## v47
+Fortnite Sprites now shows its volume discount line directly on the homepage listing card, matching the other discounted listings.

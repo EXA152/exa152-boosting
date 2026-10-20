@@ -24,7 +24,7 @@ window.EXA152_DATA = {
     "fortnite-stw-ssd",
     "fortnite-stw-crafting-materials",
     "fortnite-stw-materials",
-    "fortnite-dupe-teaching",
+    "fortnite-stw-training",
     "fortnite-sprites",
     "palworld-boss-defeats",
     "palworld-fast-travel",
@@ -58,7 +58,7 @@ window.EXA152_DATA = {
       "socialImage": "phasmophobia-level-boosting.webp",
       "imageAlt": "10-Level Boosting graphic",
       "description": "Phasmophobia level boosting from EXA152 on Eldorado. The current listing is shown at $0.25 per unit.",
-      "discountText": "Discounts: 2+ 3% off \u00b7 5+ 9% off \u00b7 10+ 18% off"
+      "discountText": "Discounts: 3% - 18% off"
     },
     "phasmophobia-prestige-boosting": {
       "id": "phasmophobia-prestige-boosting",
@@ -82,7 +82,7 @@ window.EXA152_DATA = {
       "socialImage": "phasmophobia-prestige-boosting.webp",
       "imageAlt": "Prestige Boosting graphic",
       "description": "Phasmophobia prestige boosting from EXA152 on Eldorado. The current listing is shown at $5.00 per unit.",
-      "discountText": "Discounts: 2+ 3% off \u00b7 5+ 9% off \u00b7 10+ 18% off"
+      "discountText": "Discounts: 3% - 18% off"
     },
     "phasmophobia-money-boosting": {
       "id": "phasmophobia-money-boosting",
@@ -106,7 +106,7 @@ window.EXA152_DATA = {
       "socialImage": "phasmophobia-money-boosting.webp",
       "imageAlt": "Money Boosting graphic",
       "description": "Phasmophobia money boosting from EXA152 on Eldorado. The current listing is shown at $1.00 per unit.",
-      "discountText": "Discounts: 2+ 3% off \u00b7 5+ 9% off \u00b7 10+ 18% off"
+      "discountText": "Discounts: 3% - 18% off"
     },
     "phasmophobia-achievement-boosting": {
       "id": "phasmophobia-achievement-boosting",
@@ -130,7 +130,7 @@ window.EXA152_DATA = {
       "socialImage": "phasmophobia-achievement-boosting.webp",
       "imageAlt": "Achievement Boosting graphic",
       "description": "Phasmophobia achievement boosting from EXA152 on Eldorado. The current listing is shown at $3.00 per unit.",
-      "discountText": "Discounts: 2+ 3% off \u00b7 5+ 9% off \u00b7 10+ 18% off"
+      "discountText": "Discounts: 3% - 18% off"
     },
     "fortnite-stw-traps": {
       "id": "fortnite-stw-traps",
@@ -154,7 +154,7 @@ window.EXA152_DATA = {
       "socialImage": "fortnite-stw-traps.webp",
       "imageAlt": "1 Stack of 144 Traps graphic",
       "description": "Fortnite Save the World 144 trap listing from EXA152 on Eldorado. The current listing is shown at $0.50 per unit.",
-      "discountText": "Discounts: 5+ 3% off \u00b7 25+ 10% off \u00b7 50+ 20% off"
+      "discountText": "Discounts: 3% - 20% off"
     },
     "fortnite-stw-missions": {
       "id": "fortnite-stw-missions",
@@ -178,7 +178,7 @@ window.EXA152_DATA = {
       "socialImage": "fortnite-stw-missions.webp",
       "imageAlt": "STW Missions graphic",
       "description": "Fortnite Save the World mission help from EXA152 on Eldorado. The current listing is shown at $0.50 per unit.",
-      "discountText": "Discounts: 5+ 3% off \u00b7 25+ 10% off \u00b7 50+ 18% off"
+      "discountText": "Discounts: 3% - 20% off"
     },
     "fortnite-stw-ssd": {
       "id": "fortnite-stw-ssd",
@@ -202,7 +202,7 @@ window.EXA152_DATA = {
       "socialImage": "fortnite-stw-ssd.webp",
       "imageAlt": "Storm Shield Defense (SSD) graphic",
       "description": "Fortnite Save the World Storm Shield Defense help from EXA152 on Eldorado. The current listing is shown at $1.00 per unit.",
-      "discountText": "Discounts: 5+ 3% off \u00b7 25+ 10% off \u00b7 40+ 15% off"
+      "discountText": "Discounts: 3% - 15% off"
     },
     "fortnite-stw-crafting-materials": {
       "id": "fortnite-stw-crafting-materials",
@@ -227,7 +227,7 @@ window.EXA152_DATA = {
       "socialImage": "fortnite-stw-crafting-materials.webp",
       "imageAlt": "Trap / Weapon Crafting Materials graphic",
       "description": "Fortnite Save the World trap and weapon crafting materials from EXA152 on Eldorado. The current listing is shown at $0.25 per unit.",
-      "discountText": "Discounts: 5+ 3% off \u00b7 25+ 10% off \u00b7 50+ 20% off"
+      "discountText": "Discounts: 3% - 20% off"
     },
     "fortnite-stw-materials": {
       "id": "fortnite-stw-materials",
@@ -251,7 +251,7 @@ window.EXA152_DATA = {
       "socialImage": "fortnite-stw-materials.webp",
       "imageAlt": "Wood, Stone & Metal graphic",
       "description": "Fortnite Save the World building materials (wood, stone and metal) from EXA152 on Eldorado. The current listing is shown at $0.25 per unit.",
-      "discountText": "Discounts: 10+ 3% off \u00b7 30+ 8% off \u00b7 50+ 10% off"
+      "discountText": "Discounts: 3% - 20% off"
     },
     "palworld-boss-defeats": {
       "id": "palworld-boss-defeats",
@@ -277,7 +277,7 @@ window.EXA152_DATA = {
       "socialImage": "palworld-boss-defeats.jpg",
       "imageAlt": "3 Palworld Boss Defeats graphic",
       "description": "Palworld boss defeat service from EXA152 on ZeusX. The current listing is shown at $1.00 per unit.",
-      "discountText": ""
+      "discountText": "Discounts: 3% - 10% off"
     },
     "palworld-fast-travel": {
       "id": "palworld-fast-travel",
@@ -352,7 +352,7 @@ window.EXA152_DATA = {
       "socialImage": "palworld-statue-leveling.jpg",
       "imageAlt": "Palworld Statue of Power Leveling graphic",
       "description": "Palworld Statue of Power leveling service from EXA152 on ZeusX. The current listing is shown at $1.00 per unit.",
-      "discountText": ""
+      "discountText": "Discounts: 3% - 10% off"
     },
     "palworld-account-leveling": {
       "id": "palworld-account-leveling",
@@ -377,7 +377,7 @@ window.EXA152_DATA = {
       "socialImage": "palworld-account-leveling.jpg",
       "imageAlt": "Palworld Account Leveling \u2013 10 Levels graphic",
       "description": "Palworld account leveling service from EXA152 on ZeusX. The current listing is shown at $1.00 per unit.",
-      "discountText": ""
+      "discountText": "Discounts: 3% - 10% off"
     },
     "palworld-pal": {
       "id": "palworld-pal",
@@ -402,7 +402,7 @@ window.EXA152_DATA = {
       "socialImage": "palworld-pal.jpg",
       "imageAlt": "1 Pal with Any Attack, Fully Condensed graphic",
       "description": "Palworld Pal service from EXA152 on ZeusX. The current listing is shown at $1.00 per unit.",
-      "discountText": ""
+      "discountText": "Discounts: 3% - 10% off"
     },
     "palworld-items": {
       "id": "palworld-items",
@@ -427,7 +427,7 @@ window.EXA152_DATA = {
       "socialImage": "palworld-items.jpg",
       "imageAlt": "2 Stacks of Any Item graphic",
       "description": "Palworld item stack service from EXA152 on ZeusX. The current listing is shown at $1.00 per unit.",
-      "discountText": ""
+      "discountText": "Discounts: 3% - 10% off"
     },
     "fortnite-sprites": {
       "id": "fortnite-sprites",
@@ -452,14 +452,14 @@ window.EXA152_DATA = {
       "socialImage": "fortnite-sprites.webp",
       "imageAlt": "Fortnite Sprites \u2013 Any Sprite graphic",
       "description": "Fortnite Sprites listing from EXA152 on Eldorado. Any Sprite is listed at $1.00 per unit.",
-      "discountText": "Discounts: 2+ 3% off \u00b7 4+ 5% off \u00b7 6+ 8% off \u00b7 8+ 9% off \u00b7 10+ 10% off \u00b7 12+ 12% off \u00b7 14+ 13% off \u00b7 16+ 15% off \u00b7 18+ 18% off \u00b7 20+ 20% off"
+      "discountText": "Discounts: 3% - 20% off"
     },
-    "fortnite-dupe-teaching": {
-      "id": "fortnite-dupe-teaching",
+    "fortnite-stw-training": {
+      "id": "fortnite-stw-training",
       "newUntil": "2026-11-03",
-      "title": "Teaching How to Dupe",
-      "detailTitle": "Fortnite STW \u2013 Teaching How to Dupe",
-      "page": "fortnite-dupe-teaching.html",
+      "title": "STW Duplication Method",
+      "detailTitle": "Fortnite STW \u2013 Duplication Method Lesson",
+      "page": "fortnite-stw-training.html",
       "game": "fortnite",
       "gameLabel": "Fortnite Save the World",
       "marketplace": "eldorado",
@@ -473,10 +473,10 @@ window.EXA152_DATA = {
       "visible": true,
       "updated": "2026-10-20",
       "deliveryText": "Guaranteed delivery: within 1 day. Larger orders or high order volume may take longer.",
-      "image": "fortnite-dupe-teaching.webp",
-      "socialImage": "fortnite-dupe-teaching.webp",
-      "imageAlt": "Fortnite Save the World Teaching How to Dupe graphic",
-      "description": "Fortnite Save the World duplication-method teaching service from EXA152 on Eldorado. Teaching How to Dupe is listed at $3.00 per unit.",
+      "image": "fortnite-stw-training.webp",
+      "socialImage": "fortnite-stw-training.webp",
+      "imageAlt": "Fortnite Save the World duplication method lesson graphic",
+      "description": "Fortnite Save the World duplication method lesson from EXA152. Open the Eldorado seller profile to locate the current offer.",
       "discountText": ""
     }
   }

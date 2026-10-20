@@ -1788,3 +1788,219 @@ article.card[data-listing-id] > p[data-role="description"]{
     width:min(200px, calc(100vw - 20px));
   }
 }
+
+/* === V48: Android/mobile compatibility hardening === */
+/* Allow narrow Android split-screen/foldable panes instead of forcing a 320px canvas. */
+html,
+body{
+  max-width:100%;
+  overflow-x:clip;
+}
+body{
+  min-width:0 !important;
+}
+
+/* Prevent grid/flex children and long listing text from creating accidental overflow. */
+.hero-grid > *,
+.service-grid > *,
+.cards > *,
+.marketplace-grid > *,
+.listing-controls > *,
+.featured-services-grid > *,
+.card,
+.service-box,
+.marketplace-info-card,
+.update-item{
+  min-width:0;
+}
+img,
+picture,
+video,
+canvas,
+svg{
+  max-width:100%;
+}
+.button,
+.service-link,
+.card h3,
+.section-head h2,
+.discount-note,
+.breadcrumbs,
+.global-notice-text{
+  overflow-wrap:anywhere;
+  word-break:normal;
+}
+
+/* Better touch behavior in Android Chrome/Samsung Internet. */
+a,
+button,
+input,
+select,
+summary{
+  touch-action:manipulation;
+}
+
+@media(max-width:900px){
+  /* 48px menu target and a stable hamburger-to-X animation. */
+  .menu-toggle{
+    position:relative !important;
+    flex:0 0 48px !important;
+    width:48px !important;
+    height:48px !important;
+    min-width:48px !important;
+    min-height:48px !important;
+    padding:0 !important;
+  }
+  .menu-toggle span{
+    position:absolute !important;
+    left:12px !important;
+    width:22px !important;
+    height:2px !important;
+    margin:0 !important;
+    transform-origin:center !important;
+  }
+  .menu-toggle span:nth-child(1){top:16px !important}
+  .menu-toggle span:nth-child(2){top:23px !important}
+  .menu-toggle span:nth-child(3){top:30px !important}
+  .site-header.mobile-open .menu-toggle span:nth-child(1){
+    top:23px !important;
+    transform:rotate(45deg) !important;
+  }
+  .site-header.mobile-open .menu-toggle span:nth-child(2){
+    opacity:0 !important;
+  }
+  .site-header.mobile-open .menu-toggle span:nth-child(3){
+    top:23px !important;
+    transform:rotate(-45deg) !important;
+  }
+
+  /* Keep the entire dropdown usable in short Android landscape windows. */
+  .site-header nav#site-nav{
+    max-height:calc(100dvh - 64px - env(safe-area-inset-bottom, 0px)) !important;
+    overflow-y:auto !important;
+    overflow-x:hidden !important;
+    overscroll-behavior:contain;
+    -webkit-overflow-scrolling:touch;
+  }
+  .site-header nav#site-nav > a{
+    min-height:48px !important;
+  }
+  .mobile-market-links .button{
+    min-height:48px !important;
+    white-space:normal;
+    text-align:center;
+  }
+}
+
+@media(max-width:560px){
+  /* Consistent Android-friendly tap targets without making the UI bulky. */
+  .button{
+    min-height:48px;
+    white-space:normal;
+    text-align:center;
+    line-height:1.2;
+  }
+  .button.small{
+    min-height:44px;
+  }
+  .filter-chip{
+    min-height:44px;
+    padding:8px 11px;
+    line-height:1.15;
+  }
+  .listing-search input,
+  .listing-sort-wrap select,
+  .price-filter-wrap select{
+    min-height:48px;
+    min-width:0;
+    max-width:100%;
+    font-size:16px;
+  }
+  .listing-sort-wrap,
+  .price-filter-wrap{
+    min-width:0;
+  }
+  .cta-row{
+    width:100%;
+  }
+  .cta-row .button{
+    max-width:100%;
+  }
+  .service-link{
+    min-width:0;
+  }
+  .discount-table{
+    max-width:100%;
+  }
+  .discount-table th,
+  .discount-table td{
+    white-space:normal;
+  }
+
+  /* Larger touch target, same compact visible red X. */
+  .global-notice{
+    top:max(10px, env(safe-area-inset-top, 0px));
+    right:max(10px, env(safe-area-inset-right, 0px));
+    max-height:calc(100dvh - 20px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+    overflow:auto;
+    overscroll-behavior:contain;
+  }
+  .global-notice-close{
+    top:0;
+    left:0;
+    width:44px;
+    height:44px;
+    line-height:44px;
+  }
+
+  .back-to-top{
+    right:max(12px, env(safe-area-inset-right, 0px));
+    bottom:max(12px, env(safe-area-inset-bottom, 0px));
+    width:48px;
+    height:48px;
+  }
+}
+
+/* Ultra-narrow Android split-screen / foldable pane fallback. */
+@media(max-width:319px){
+  .wrap{
+    width:calc(100% - 20px);
+  }
+  .brand{
+    font-size:1.15rem;
+  }
+  h1{
+    font-size:clamp(2rem,12vw,2.35rem);
+  }
+  h2{
+    font-size:clamp(1.7rem,10vw,2rem);
+  }
+  .hero,
+  .section{
+    padding-top:46px;
+    padding-bottom:46px;
+  }
+  .card,
+  .marketplace-info-card,
+  .service-box{
+    padding:16px;
+  }
+  .hero-mini-stats{
+    grid-template-columns:1fr;
+  }
+  .mobile-market-links{
+    grid-template-columns:1fr !important;
+  }
+}
+
+/* Android menu/notifier collision fix: keep the notice visible, but never over the hamburger/dropdown. */
+@media(max-width:900px){
+  .global-notice{
+    top:calc(74px + env(safe-area-inset-top, 0px)) !important;
+    right:max(10px, env(safe-area-inset-right, 0px)) !important;
+    z-index:25 !important; /* header/nav use a higher stacking layer */
+    max-height:calc(100dvh - 86px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+    overflow:auto;
+    overscroll-behavior:contain;
+  }
+}

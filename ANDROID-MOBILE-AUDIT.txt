@@ -1,0 +1,45 @@
+EXA152 ANDROID MOBILE AUDIT — V48
+================================
+
+Scope
+-----
+Audited all 21 public HTML pages at these Android-style CSS viewport widths:
+320, 360, 375, 393, 412, 432, and 480 px.
+
+Also swept representative homepage/detail/privacy pages from 280px through 900px to catch narrow split-screen/foldable-pane behavior.
+
+V47 findings
+------------
+- No horizontal overflow was detected on any of the 147 all-page renders at 320–480px.
+- The mobile navigation stayed inside the viewport at the tested phone widths.
+- Main mobile headings, listing cards, detail panels, discount tables, images, and CTA buttons wrapped correctly.
+- Widths below 320px could horizontally scroll because body had min-width:320px.
+- Several interactive controls were smaller than ideal mobile touch targets:
+  * hamburger: 42x42
+  * back-to-top: 42x42 on small screens
+  * filter chips: about 28px high
+  * price select: 42px high
+- The mobile menu did not have a height cap/scroll fallback for short landscape Android windows.
+- The global-notice close control had a small visual/click target.
+- Dynamic testing found the top-right global notice could intercept taps on the mobile hamburger because both occupied the same corner.
+
+V48 fixes
+---------
+- Removed the forced 320px minimum body width and added overflow hardening.
+- Added min-width:0 to grid/flex children that can otherwise create overflow from long text.
+- Added max-width safeguards for media.
+- Increased hamburger to 48x48 and made its open-state X geometry deterministic.
+- Made mobile nav links and marketplace buttons at least 48px tall.
+- Added max-height + internal scrolling to the open mobile menu for short landscape windows.
+- Increased mobile filter chips to at least 44px tall.
+- Increased mobile search/sort/price controls to 48px and 16px text.
+- Increased mobile CTA buttons to 48px.
+- Increased mobile back-to-top to 48px.
+- Increased the global notice X hit target while preserving the small red X appearance.
+- On mobile/tablet widths, moved the notice just below the 64px header and below the header stacking layer so it never blocks the hamburger or open menu.
+- Added safe-area inset support for fixed controls/notices.
+- Added an ultra-narrow (<320px) fallback for Android split-screen/foldable panes.
+
+Compatibility target
+--------------------
+Modern Android Chrome, Samsung Internet, Edge/Chromium Android, and other current Chromium-based Android browsers.

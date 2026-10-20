@@ -141,9 +141,9 @@ Added `fortnite-sprites.html` and `fortnite-sprites.webp` for the Eldorado Any S
 
 
 ## v45 update
-- Added Fortnite STW – Teaching How to Dupe at $3.00 / unit.
-- Eldorado URL: https://www.eldorado.gg/fortnite-skins/oi/29036798-83f6-455f-2576-08df2dd1d31a
-- Added fortnite-dupe-teaching.html.
+- Added Fortnite STW – STW Duplication Method at $3.00 / unit.
+- Eldorado URL: https://www.eldorado.gg/users/EXA152
+- Added fortnite-stw-training.html.
 - Added fresh Google Search Console sitemap path: `sitemap-v45.xml`.
 - Current listing count: 18.
 

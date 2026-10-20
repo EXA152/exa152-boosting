@@ -6,3 +6,4 @@ Sitemap: https://exa152.github.io/exa152-boosting/sitemap-main.xml
 Sitemap: https://exa152.github.io/exa152-boosting/sitemap.xml
 Sitemap: https://exa152.github.io/exa152-boosting/sitemap.txt
 Sitemap: https://exa152.github.io/exa152-boosting/sitemap-v46.xml
+Sitemap: https://exa152.github.io/exa152-boosting/sitemap-v50.xml

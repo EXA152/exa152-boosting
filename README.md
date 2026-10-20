@@ -138,3 +138,11 @@ Set `globalNotice` in `settings.js` to any non-empty text to show a small gray r
 
 ## Fortnite Sprites
 Added `fortnite-sprites.html` and `fortnite-sprites.webp` for the Eldorado Any Sprite listing.
+
+
+## v45 update
+- Added Fortnite STW – Teaching How to Dupe at $3.00 / unit.
+- Eldorado URL: https://www.eldorado.gg/fortnite-skins/oi/29036798-83f6-455f-2576-08df2dd1d31a
+- Added fortnite-dupe-teaching.html.
+- Added fresh Google Search Console sitemap path: `sitemap-v45.xml`.
+- Current listing count: 18.

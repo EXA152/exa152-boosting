@@ -149,3 +149,6 @@ Added `fortnite-sprites.html` and `fortnite-sprites.webp` for the Eldorado Any S
 
 ## v47
 Fortnite Sprites now shows its volume discount line directly on the homepage listing card, matching the other discounted listings.
+
+## Palworld discount display
+Homepage cards and service pages now automatically create/show a discount note whenever a listing has a non-empty `discountText` value in `listings-data.js`. Listings with a blank `discountText` remain hidden.

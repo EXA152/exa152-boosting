@@ -219,7 +219,15 @@
     const title = card.querySelector('[data-role="title"], h3'); if (title) title.textContent = item.title;
     const price = card.querySelector('[data-role="price"], .price'); if (price) price.textContent = moneyText(item);
     const desc = card.querySelector('[data-role="description"]'); if (desc) desc.textContent = item.description;
-    const discount = card.querySelector('[data-role="discount"], .discount-note');
+    let discount = card.querySelector('[data-role="discount"], .discount-note');
+    if (!discount && item.discountText) {
+      discount = document.createElement('p');
+      discount.className = 'discount-note';
+      discount.dataset.role = 'discount';
+      const anchor = card.querySelector('[data-role="updated"], .price-updated') || card.querySelector('[data-role="price"], .price');
+      if (anchor) anchor.insertAdjacentElement('afterend', discount);
+      else card.appendChild(discount);
+    }
     if (discount) { discount.textContent = item.discountText || ''; discount.hidden = !item.discountText; }
     const updated = card.querySelector('[data-role="updated"], .price-updated');
     if (updated) { const iso=item.updated || effectiveSiteUpdated; updated.textContent='Updated '+prettyDate(iso); updated.setAttribute('datetime',iso); }
@@ -248,6 +256,18 @@
     document.querySelectorAll('.hero [data-role="price"]').forEach(el=>el.textContent=moneyText(item));
     const updated = document.querySelector('.hero [data-role="updated"]');
     if (updated) { const iso=item.updated || effectiveSiteUpdated; updated.textContent='Price updated '+prettyDate(iso); updated.setAttribute('datetime',iso); }
+    let discount = document.querySelector('.hero [data-role="discount"], .hero .discount-note');
+    if (!discount && item.discountText) {
+      discount = document.createElement('div');
+      discount.className = 'discount-note';
+      discount.dataset.role = 'discount';
+      if (updated) updated.insertAdjacentElement('afterend', discount);
+      else {
+        const price = document.querySelector('.hero [data-role="price"], .hero .price');
+        if (price) price.insertAdjacentElement('afterend', discount);
+      }
+    }
+    if (discount) { discount.textContent = item.discountText || ''; discount.hidden = !item.discountText; }
     const type = document.querySelector('.hero [data-role="type"]'); if (type) type.textContent=item.type;
     const status = document.querySelector('.hero [data-role="status"]'); if (status) { status.textContent=item.status; status.className=`status-badge ${statusClass(item.status)}`; }
     const market = document.querySelector('.hero [data-role="market-link"]');

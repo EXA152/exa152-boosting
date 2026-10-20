@@ -24,7 +24,7 @@ window.EXA152_DATA = {
     "fortnite-stw-ssd",
     "fortnite-stw-crafting-materials",
     "fortnite-stw-materials",
-    "fortnite-dupe-teaching",
+    "fortnite-stw-training",
     "fortnite-sprites",
     "palworld-boss-defeats",
     "palworld-fast-travel",
@@ -454,12 +454,12 @@ window.EXA152_DATA = {
       "description": "Fortnite Sprites listing from EXA152 on Eldorado. Any Sprite is listed at $1.00 per unit.",
       "discountText": "Discounts: 3% - 20% off"
     },
-    "fortnite-dupe-teaching": {
-      "id": "fortnite-dupe-teaching",
+    "fortnite-stw-training": {
+      "id": "fortnite-stw-training",
       "newUntil": "2026-11-03",
-      "title": "Teaching How to Dupe",
-      "detailTitle": "Fortnite STW – Teaching How to Dupe",
-      "page": "fortnite-dupe-teaching.html",
+      "title": "STW Duplication Method",
+      "detailTitle": "Fortnite STW – Duplication Method Lesson",
+      "page": "fortnite-stw-training.html",
       "game": "fortnite",
       "gameLabel": "Fortnite Save the World",
       "marketplace": "eldorado",
@@ -473,10 +473,10 @@ window.EXA152_DATA = {
       "visible": true,
       "updated": "2026-10-20",
       "deliveryText": "Guaranteed delivery: within 1 day. Larger orders or high order volume may take longer.",
-      "image": "fortnite-dupe-teaching.webp",
-      "socialImage": "fortnite-dupe-teaching.webp",
-      "imageAlt": "Fortnite Save the World Teaching How to Dupe graphic",
-      "description": "Fortnite Save the World duplication-method teaching service from EXA152 on Eldorado. Teaching How to Dupe is listed at $3.00 per unit.",
+      "image": "fortnite-stw-training.webp",
+      "socialImage": "fortnite-stw-training.webp",
+      "imageAlt": "Fortnite Save the World duplication method lesson graphic",
+      "description": "Fortnite Save the World duplication method lesson from EXA152. Open the Eldorado seller profile to locate the current offer.",
       "discountText": ""
     }
   }
